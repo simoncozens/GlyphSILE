@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F42900921BB513B70047C6CF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42900911BB513B70047C6CF /* Cocoa.framework */; settings = {ASSET_TAGS = (); }; };
+		F42900951BB513B70047C6CF /* GlyphSILE-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = F42900941BB513B70047C6CF /* GlyphSILE-Prefix.pch */; };
+		F42900971BB513B70047C6CF /* GlyphSILE-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F42900961BB513B70047C6CF /* GlyphSILE-Info.plist */; };
+		F429009A1BB513B70047C6CF /* GlyphSILE.m in Sources */ = {isa = PBXBuildFile; fileRef = F42900991BB513B70047C6CF /* GlyphSILE.m */; };
+		F429009D1BB513B70047C6CF /* GlyphsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F429009C1BB513B70047C6CF /* GlyphsCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F429008E1BB513B70047C6CF /* GlyphSILE.glyphsPlugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlyphSILE.glyphsPlugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42900911BB513B70047C6CF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		F42900941BB513B70047C6CF /* GlyphSILE-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GlyphSILE-Prefix.pch"; sourceTree = "<group>"; };
+		F42900961BB513B70047C6CF /* GlyphSILE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GlyphSILE-Info.plist"; sourceTree = "<group>"; };
+		F42900981BB513B70047C6CF /* GlyphSILE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlyphSILE.h; sourceTree = "<group>"; };
+		F42900991BB513B70047C6CF /* GlyphSILE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlyphSILE.m; sourceTree = "<group>"; };
+		F429009C1BB513B70047C6CF /* GlyphsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GlyphsCore.framework; path = /Applications/Glyphs.app/Contents/Frameworks/GlyphsCore.framework; sourceTree = "<absolute>"; };
+		F429009E1BB513B70047C6CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F429008B1BB513B70047C6CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F429009D1BB513B70047C6CF /* GlyphsCore.framework in Frameworks */,
+				F42900921BB513B70047C6CF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F42900851BB513B70047C6CF = {
+			isa = PBXGroup;
+			children = (
+				F42900931BB513B70047C6CF /* GlyphSILE */,
+				F42900901BB513B70047C6CF /* Frameworks */,
+				F429008F1BB513B70047C6CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F429008F1BB513B70047C6CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F429008E1BB513B70047C6CF /* GlyphSILE.glyphsPlugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F42900901BB513B70047C6CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F42900911BB513B70047C6CF /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F42900931BB513B70047C6CF /* GlyphSILE */ = {
+			isa = PBXGroup;
+			children = (
+				F42900941BB513B70047C6CF /* GlyphSILE-Prefix.pch */,
+				F42900961BB513B70047C6CF /* GlyphSILE-Info.plist */,
+				F42900981BB513B70047C6CF /* GlyphSILE.h */,
+				F42900991BB513B70047C6CF /* GlyphSILE.m */,
+				F429009E1BB513B70047C6CF /* Info.plist */,
+				F429009B1BB513B70047C6CF /* Supporting Files */,
+			);
+			path = GlyphSILE;
+			sourceTree = "<group>";
+		};
+		F429009B1BB513B70047C6CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F429009C1BB513B70047C6CF /* GlyphsCore.framework */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F429008D1BB513B70047C6CF /* GlyphSILE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F42900A11BB513B70047C6CF /* Build configuration list for PBXNativeTarget "GlyphSILE" */;
+			buildPhases = (
+				F429008A1BB513B70047C6CF /* Sources */,
+				F429008B1BB513B70047C6CF /* Frameworks */,
+				F429008C1BB513B70047C6CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GlyphSILE;
+			productName = GlyphSILE;
+			productReference = F429008E1BB513B70047C6CF /* GlyphSILE.glyphsPlugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F42900861BB513B70047C6CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Simon Cozens";
+				TargetAttributes = {
+					F429008D1BB513B70047C6CF = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = F42900891BB513B70047C6CF /* Build configuration list for PBXProject "GlyphSILE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F42900851BB513B70047C6CF;
+			productRefGroup = F429008F1BB513B70047C6CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F429008D1BB513B70047C6CF /* GlyphSILE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F429008C1BB513B70047C6CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F42900971BB513B70047C6CF /* GlyphSILE-Info.plist in Resources */,
+				F42900951BB513B70047C6CF /* GlyphSILE-Prefix.pch in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F429008A1BB513B70047C6CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F429009A1BB513B70047C6CF /* GlyphSILE.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F429009F1BB513B70047C6CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		F42900A01BB513B70047C6CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		F42900A21BB513B70047C6CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
+				INFOPLIST_FILE = GlyphSILE/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.simon-cozens.GlyphSILE";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = glyphsPlugin;
+			};
+			name = Debug;
+		};
+		F42900A31BB513B70047C6CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
+				INFOPLIST_FILE = GlyphSILE/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.simon-cozens.GlyphSILE";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = glyphsPlugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F42900891BB513B70047C6CF /* Build configuration list for PBXProject "GlyphSILE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F429009F1BB513B70047C6CF /* Debug */,
+				F42900A01BB513B70047C6CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F42900A11BB513B70047C6CF /* Build configuration list for PBXNativeTarget "GlyphSILE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F42900A21BB513B70047C6CF /* Debug */,
+				F42900A31BB513B70047C6CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F42900861BB513B70047C6CF /* Project object */;
+}
