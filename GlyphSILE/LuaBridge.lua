@@ -20,35 +20,52 @@ function sendMesg (target, selector, ...)
    return objc.call(to_send)
 end
 
+local method_mt = {
+  __tostring = function(o)
+      return "<"..(o.name).." on "..tostring(o.target)..">"
+  end,
+  __call = function (func, ...)
+    -- print("obj called!", func, obj)
+    local ret = sendMesg(obj, ...)
+    if type(ret) == "userdata" then
+      return wrap(ret)
+    else
+      return ret
+    end
+  end,
+
+}
+
+local object_mt ={
+  __tostring = function (o)
+    return "<"..(o.Class)..">"
+  end,
+  __index = function(inObject, inKey)
+    local p = objc.getproperty(unwrap(inObject), inKey)
+    if p then return p end
+    inKey = inKey:gsub(":","_")
+    p = objc.getmethod(unwrap(inObject), inKey)
+    if p then
+      p = wrap(p)
+      setmetatable(p, {})
+      p.name = inKey
+      p.target = inObject
+      setmetatable(p, method_mt)
+    end
+    return p
+  end,
+  __newindex =  function(inObject, inKey, inValue)
+    -- XXX
+    sendMesg(inObject["WrappedObject"], 'setValue:forKeyPath:', inValue, inKey)
+  end
+}
 
 -- Wrap Objective-C Pointers
 function wrap(obj)
     local o = {}
     o["WrappedObject"] = obj;
-    setmetatable(o, {__call = function (func, ...)
-                                -- print("obj called!", func, obj)
-                                local ret = sendMesg(obj, ...)
-                                if type(ret) == "userdata" then
-                                   return wrap(ret)
-                                else
-                                   return ret
-                                end
-                             end,
-                    __index = function(inObject, inKey)
-                                local ret = sendMesg(inObject["WrappedObject"], 'valueForKeyPath:', inKey)
-                                if type(ret) == "userdata" then
-                                   return wrap(ret)
-                                else
-                                   return ret
-                                end
-                              end,
-                    __newindex =  function(inObject, inKey, inValue)
-                                    sendMesg(inObject["WrappedObject"], 'setValue:forKeyPath:', inValue, inKey)
-                                  end
-
-
-
-                              })
+    o["Class"] = objc.classof(obj);
+    setmetatable(o, object_mt)
     return o
 end
 
@@ -66,9 +83,11 @@ end
 -- Looks for Objective-C class if variable is not found in global space
 function getUnknownVariable(tbl, key)
     local cls = objc.getclass(key)
-    cls = wrap(cls)
-    tbl[key] = cls
-    return cls
+    if cls then
+        cls = wrap(cls)
+        tbl[key] = cls
+        return cls
+    end
 end
 
 
