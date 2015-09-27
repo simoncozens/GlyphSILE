@@ -7,7 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <GlyphsCore/GlyphsPluginProtocol.h>
 
-@interface GlyphSILE : NSObject {}
+@interface GlyphSILE : NSObject <GlyphsPlugin> {}
+@property (nonatomic, weak) IBOutlet NSTextField *incomingCode;
+@property (nonatomic, weak) IBOutlet NSTextField *luaResult;
+@property (nonatomic, weak) IBOutlet NSButton *compileButton;
+@property (nonatomic, weak) IBOutlet NSWindow *consoleWindow;
 
 @end

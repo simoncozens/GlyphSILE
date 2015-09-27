@@ -1,0 +1,1 @@
+Glyphs = NSApplication("sharedApplication")
