@@ -7,65 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F42900921BB513B70047C6CF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42900911BB513B70047C6CF /* Cocoa.framework */; settings = {ASSET_TAGS = (); }; };
+		F42900921BB513B70047C6CF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42900911BB513B70047C6CF /* Cocoa.framework */; };
 		F42900951BB513B70047C6CF /* GlyphSILE-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = F42900941BB513B70047C6CF /* GlyphSILE-Prefix.pch */; };
 		F42900971BB513B70047C6CF /* GlyphSILE-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F42900961BB513B70047C6CF /* GlyphSILE-Info.plist */; };
 		F429009A1BB513B70047C6CF /* GlyphSILE.m in Sources */ = {isa = PBXBuildFile; fileRef = F42900991BB513B70047C6CF /* GlyphSILE.m */; };
 		F429009D1BB513B70047C6CF /* GlyphsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F429009C1BB513B70047C6CF /* GlyphsCore.framework */; };
-		F47783801BB5FCB800B55550 /* LuaConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = F477837F1BB5FCB800B55550 /* LuaConsole.xib */; settings = {ASSET_TAGS = (); }; };
-		F47783821BB7FC9900B55550 /* GlyphsApp.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47783811BB7FC9900B55550 /* GlyphsApp.lua */; settings = {ASSET_TAGS = (); }; };
-		F47CE55E1BC15889009C76C1 /* contents.html in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5161BC15889009C76C1 /* contents.html */; settings = {ASSET_TAGS = (); }; };
-		F47CE55F1BC15889009C76C1 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5171BC15889009C76C1 /* logo.gif */; settings = {ASSET_TAGS = (); }; };
-		F47CE5601BC15889009C76C1 /* lua.1 in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5181BC15889009C76C1 /* lua.1 */; settings = {ASSET_TAGS = (); }; };
-		F47CE5611BC15889009C76C1 /* lua.css in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5191BC15889009C76C1 /* lua.css */; settings = {ASSET_TAGS = (); }; };
-		F47CE5621BC15889009C76C1 /* luac.1 in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51A1BC15889009C76C1 /* luac.1 */; settings = {ASSET_TAGS = (); }; };
-		F47CE5631BC15889009C76C1 /* manual.css in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51B1BC15889009C76C1 /* manual.css */; settings = {ASSET_TAGS = (); }; };
-		F47CE5641BC15889009C76C1 /* manual.html in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51C1BC15889009C76C1 /* manual.html */; settings = {ASSET_TAGS = (); }; };
-		F47CE5651BC15889009C76C1 /* osi-certified-72x60.png in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51D1BC15889009C76C1 /* osi-certified-72x60.png */; settings = {ASSET_TAGS = (); }; };
-		F47CE5661BC15889009C76C1 /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51E1BC15889009C76C1 /* readme.html */; settings = {ASSET_TAGS = (); }; };
-		F47CE5671BC15889009C76C1 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = F47CE51F1BC15889009C76C1 /* Makefile */; settings = {ASSET_TAGS = (); }; };
-		F47CE5681BC15889009C76C1 /* README in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5201BC15889009C76C1 /* README */; settings = {ASSET_TAGS = (); }; };
-		F47CE5691BC15889009C76C1 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5221BC15889009C76C1 /* lapi.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE56A1BC15889009C76C1 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5241BC15889009C76C1 /* lauxlib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE56B1BC15889009C76C1 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5261BC15889009C76C1 /* lbaselib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE56C1BC15889009C76C1 /* lbitlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5271BC15889009C76C1 /* lbitlib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE56D1BC15889009C76C1 /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5281BC15889009C76C1 /* lcode.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE56E1BC15889009C76C1 /* lcorolib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE52A1BC15889009C76C1 /* lcorolib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE56F1BC15889009C76C1 /* lctype.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE52B1BC15889009C76C1 /* lctype.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5701BC15889009C76C1 /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE52D1BC15889009C76C1 /* ldblib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5711BC15889009C76C1 /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE52E1BC15889009C76C1 /* ldebug.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5721BC15889009C76C1 /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5301BC15889009C76C1 /* ldo.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5731BC15889009C76C1 /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5321BC15889009C76C1 /* ldump.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5741BC15889009C76C1 /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5331BC15889009C76C1 /* lfunc.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5751BC15889009C76C1 /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5351BC15889009C76C1 /* lgc.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5761BC15889009C76C1 /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5371BC15889009C76C1 /* linit.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5771BC15889009C76C1 /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5381BC15889009C76C1 /* liolib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5781BC15889009C76C1 /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5391BC15889009C76C1 /* llex.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5791BC15889009C76C1 /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE53C1BC15889009C76C1 /* lmathlib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE57A1BC15889009C76C1 /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE53D1BC15889009C76C1 /* lmem.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE57B1BC15889009C76C1 /* loadlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE53F1BC15889009C76C1 /* loadlib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE57C1BC15889009C76C1 /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5401BC15889009C76C1 /* lobject.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE57D1BC15889009C76C1 /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5421BC15889009C76C1 /* lopcodes.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE57E1BC15889009C76C1 /* loslib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5441BC15889009C76C1 /* loslib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE57F1BC15889009C76C1 /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5451BC15889009C76C1 /* lparser.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5801BC15889009C76C1 /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5471BC15889009C76C1 /* lstate.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5811BC15889009C76C1 /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5491BC15889009C76C1 /* lstring.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5821BC15889009C76C1 /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE54B1BC15889009C76C1 /* lstrlib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5831BC15889009C76C1 /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE54C1BC15889009C76C1 /* ltable.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5841BC15889009C76C1 /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE54E1BC15889009C76C1 /* ltablib.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5851BC15889009C76C1 /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE54F1BC15889009C76C1 /* ltm.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5871BC15889009C76C1 /* luac.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5541BC15889009C76C1 /* luac.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5881BC15889009C76C1 /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5571BC15889009C76C1 /* lundump.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE5891BC15889009C76C1 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5591BC15889009C76C1 /* lvm.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE58A1BC15889009C76C1 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE55B1BC15889009C76C1 /* lzio.c */; settings = {ASSET_TAGS = (); }; };
-		F47CE58B1BC15889009C76C1 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = F47CE55D1BC15889009C76C1 /* Makefile */; settings = {ASSET_TAGS = (); }; };
-		F47CE5971BC158A7009C76C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F47CE58D1BC158A7009C76C1 /* .gitignore */; settings = {ASSET_TAGS = (); }; };
-		F47CE5981BC158A7009C76C1 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = F47CE58E1BC158A7009C76C1 /* .travis.yml */; settings = {ASSET_TAGS = (); }; };
-		F47CE5991BC158A7009C76C1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5901BC158A7009C76C1 /* LICENSE */; settings = {ASSET_TAGS = (); }; };
-		F47CE59A1BC158A7009C76C1 /* LuaBridge.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5911BC158A7009C76C1 /* LuaBridge.lua */; settings = {ASSET_TAGS = (); }; };
-		F47CE59B1BC158A7009C76C1 /* LuaBridgedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5931BC158A7009C76C1 /* LuaBridgedFunctions.m */; settings = {ASSET_TAGS = (); }; };
-		F47CE59C1BC158A7009C76C1 /* NSLua.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5951BC158A7009C76C1 /* NSLua.m */; settings = {ASSET_TAGS = (); }; };
-		F47CE59D1BC158A7009C76C1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5961BC158A7009C76C1 /* README.md */; settings = {ASSET_TAGS = (); }; };
+		F47783801BB5FCB800B55550 /* LuaConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = F477837F1BB5FCB800B55550 /* LuaConsole.xib */; };
+		F47783821BB7FC9900B55550 /* GlyphsApp.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47783811BB7FC9900B55550 /* GlyphsApp.lua */; };
+		F47CE55E1BC15889009C76C1 /* contents.html in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5161BC15889009C76C1 /* contents.html */; };
+		F47CE55F1BC15889009C76C1 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5171BC15889009C76C1 /* logo.gif */; };
+		F47CE5601BC15889009C76C1 /* lua.1 in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5181BC15889009C76C1 /* lua.1 */; };
+		F47CE5611BC15889009C76C1 /* lua.css in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5191BC15889009C76C1 /* lua.css */; };
+		F47CE5621BC15889009C76C1 /* luac.1 in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51A1BC15889009C76C1 /* luac.1 */; };
+		F47CE5631BC15889009C76C1 /* manual.css in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51B1BC15889009C76C1 /* manual.css */; };
+		F47CE5641BC15889009C76C1 /* manual.html in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51C1BC15889009C76C1 /* manual.html */; };
+		F47CE5651BC15889009C76C1 /* osi-certified-72x60.png in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51D1BC15889009C76C1 /* osi-certified-72x60.png */; };
+		F47CE5661BC15889009C76C1 /* readme.html in Resources */ = {isa = PBXBuildFile; fileRef = F47CE51E1BC15889009C76C1 /* readme.html */; };
+		F47CE5681BC15889009C76C1 /* README in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5201BC15889009C76C1 /* README */; };
+		F47CE5691BC15889009C76C1 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5221BC15889009C76C1 /* lapi.c */; };
+		F47CE56A1BC15889009C76C1 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5241BC15889009C76C1 /* lauxlib.c */; };
+		F47CE56B1BC15889009C76C1 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5261BC15889009C76C1 /* lbaselib.c */; };
+		F47CE56C1BC15889009C76C1 /* lbitlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5271BC15889009C76C1 /* lbitlib.c */; };
+		F47CE56D1BC15889009C76C1 /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5281BC15889009C76C1 /* lcode.c */; };
+		F47CE56E1BC15889009C76C1 /* lcorolib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE52A1BC15889009C76C1 /* lcorolib.c */; };
+		F47CE56F1BC15889009C76C1 /* lctype.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE52B1BC15889009C76C1 /* lctype.c */; };
+		F47CE5701BC15889009C76C1 /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE52D1BC15889009C76C1 /* ldblib.c */; };
+		F47CE5711BC15889009C76C1 /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE52E1BC15889009C76C1 /* ldebug.c */; };
+		F47CE5721BC15889009C76C1 /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5301BC15889009C76C1 /* ldo.c */; };
+		F47CE5731BC15889009C76C1 /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5321BC15889009C76C1 /* ldump.c */; };
+		F47CE5741BC15889009C76C1 /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5331BC15889009C76C1 /* lfunc.c */; };
+		F47CE5751BC15889009C76C1 /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5351BC15889009C76C1 /* lgc.c */; };
+		F47CE5761BC15889009C76C1 /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5371BC15889009C76C1 /* linit.c */; };
+		F47CE5771BC15889009C76C1 /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5381BC15889009C76C1 /* liolib.c */; };
+		F47CE5781BC15889009C76C1 /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5391BC15889009C76C1 /* llex.c */; };
+		F47CE5791BC15889009C76C1 /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE53C1BC15889009C76C1 /* lmathlib.c */; };
+		F47CE57A1BC15889009C76C1 /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE53D1BC15889009C76C1 /* lmem.c */; };
+		F47CE57B1BC15889009C76C1 /* loadlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE53F1BC15889009C76C1 /* loadlib.c */; };
+		F47CE57C1BC15889009C76C1 /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5401BC15889009C76C1 /* lobject.c */; };
+		F47CE57D1BC15889009C76C1 /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5421BC15889009C76C1 /* lopcodes.c */; };
+		F47CE57E1BC15889009C76C1 /* loslib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5441BC15889009C76C1 /* loslib.c */; };
+		F47CE57F1BC15889009C76C1 /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5451BC15889009C76C1 /* lparser.c */; };
+		F47CE5801BC15889009C76C1 /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5471BC15889009C76C1 /* lstate.c */; };
+		F47CE5811BC15889009C76C1 /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5491BC15889009C76C1 /* lstring.c */; };
+		F47CE5821BC15889009C76C1 /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE54B1BC15889009C76C1 /* lstrlib.c */; };
+		F47CE5831BC15889009C76C1 /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE54C1BC15889009C76C1 /* ltable.c */; };
+		F47CE5841BC15889009C76C1 /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE54E1BC15889009C76C1 /* ltablib.c */; };
+		F47CE5851BC15889009C76C1 /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE54F1BC15889009C76C1 /* ltm.c */; };
+		F47CE5871BC15889009C76C1 /* luac.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5541BC15889009C76C1 /* luac.c */; };
+		F47CE5881BC15889009C76C1 /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5571BC15889009C76C1 /* lundump.c */; };
+		F47CE5891BC15889009C76C1 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5591BC15889009C76C1 /* lvm.c */; };
+		F47CE58A1BC15889009C76C1 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = F47CE55B1BC15889009C76C1 /* lzio.c */; };
+		F47CE5971BC158A7009C76C1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F47CE58D1BC158A7009C76C1 /* .gitignore */; };
+		F47CE5981BC158A7009C76C1 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = F47CE58E1BC158A7009C76C1 /* .travis.yml */; };
+		F47CE5991BC158A7009C76C1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5901BC158A7009C76C1 /* LICENSE */; };
+		F47CE59A1BC158A7009C76C1 /* LuaBridge.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5911BC158A7009C76C1 /* LuaBridge.lua */; };
+		F47CE59B1BC158A7009C76C1 /* LuaBridgedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5931BC158A7009C76C1 /* LuaBridgedFunctions.m */; };
+		F47CE59C1BC158A7009C76C1 /* NSLua.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5951BC158A7009C76C1 /* NSLua.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -421,10 +418,8 @@
 				F47CE56D1BC15889009C76C1 /* lcode.c in Sources */,
 				F47CE56E1BC15889009C76C1 /* lcorolib.c in Sources */,
 				F47CE5741BC15889009C76C1 /* lfunc.c in Sources */,
-				F47CE5671BC15889009C76C1 /* Makefile in Sources */,
 				F47CE5711BC15889009C76C1 /* ldebug.c in Sources */,
 				F47CE5771BC15889009C76C1 /* liolib.c in Sources */,
-				F47CE58B1BC15889009C76C1 /* Makefile in Sources */,
 				F47CE57E1BC15889009C76C1 /* loslib.c in Sources */,
 				F47CE56B1BC15889009C76C1 /* lbaselib.c in Sources */,
 				F47CE5851BC15889009C76C1 /* ltm.c in Sources */,
@@ -440,7 +435,6 @@
 				F47CE5801BC15889009C76C1 /* lstate.c in Sources */,
 				F47CE57D1BC15889009C76C1 /* lopcodes.c in Sources */,
 				F47CE5781BC15889009C76C1 /* llex.c in Sources */,
-				F47CE59D1BC158A7009C76C1 /* README.md in Sources */,
 				F47CE5881BC15889009C76C1 /* lundump.c in Sources */,
 				F429009A1BB513B70047C6CF /* GlyphSILE.m in Sources */,
 				F47CE5721BC15889009C76C1 /* ldo.c in Sources */,
@@ -540,9 +534,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "~/Library/Application Support/Glyphs/Plugins";
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
 				INFOPLIST_FILE = GlyphSILE/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = /;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lua/src",
@@ -559,7 +555,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
 				INFOPLIST_FILE = GlyphSILE/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lua/src",

@@ -9,10 +9,16 @@
 #import "GlyphSILE.h"
 #import "NSLua.h"
 
+// stub definitions, implemented in Glyphs
+@interface JSTDocument
+- (void) setKeywords:(NSDictionary *)keyWords;
+@end
+
+@protocol WindowsAdditions <NSObject>
+- (BOOL)reallyVisible;
+@end
+
 @implementation GlyphSILE
-@synthesize consoleWindow;
-@synthesize incomingCode;
-@synthesize luaResult;
 
 NSMutableString *buffer;
 
@@ -23,6 +29,11 @@ NSMutableString *buffer;
 		// do stuff
 	}
 	return self;
+}
+
+- (void) dealloc {
+	self.incomingCode = nil;
+	self.luaResult = nil;
 }
 
 int lua_my_print(lua_State* L) {
@@ -69,6 +80,47 @@ static const struct luaL_Reg printlib [] = {
         const char *err = lua_tostring(L, -1);
         NSLog(@"error while loading Glyphs API: %s", err);
     }
+	
+	
+	NSArray *blueWords = @[@"False", @"True", @"None", @"print", @"and", @"del", @"from", @"not", @"while", @"as", @"elif", @"global", @"or", @"with", @"assert", @"else", @"if", @"pass", @"yield", @"break", @"except", @"import", @"print", @"class", @"exec", @"in", @"raise", @"continue", @"finally", @"is", @"return", @"function", @"for", @"lambda", @"try"];
+	
+	NSArray *greenWords = @[@"glyphs", @"components", @"anchors", @"kerning", @"Layer", @"Glyph", @"Node", @"Anchor", @"Component"];
+	NSArray *orangeWords = @[@"all", @"abs", @"any", @"apply", @"callable", @"chr", @"cmp", @"coerce", @"compile", @"delattr", @"dir", @"divmod", @"eval", @"execfile", @"filter", @"getattr", @"globals", @"hasattr", @"hash", @"hex", @"id", @"input", @"intern", @"isinstance", @"issubclass", @"iter", @"len", @"locals", @"map", @"max", @"min", @"oct", @"ord", @"pow", @"range", @"raw_input", @"reduce", @"reload", @"repr", @"round", @"setattr", @"sorted", @"sum", @"unichr", @"vars", @"zip", @"basestring", @"bool", @"buffer", @"classmethod", @"complex", @"dict", @"enumerate", @"file", @"float", @"frozenset", @"int", @"list", @"long", @"object", @"open", @"property", @"reversed", @"set", @"slice", @"staticmethod", @"str", @"super", @"tuple", @"type", @"unicode", @"xrange"];
+
+	
+	NSMutableDictionary *keywords = [[NSMutableDictionary alloc] init];
+	//[keywords setObject:[NSColor whiteColor] forKey:GSForegroundColor];
+	NSFont *Font = [NSFont fontWithName:@"Menlo-Italic" size:11];
+	if (Font) {
+		keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor], @"NSFont": Font};
+	}
+	else {
+		keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor]};
+	}
+	
+	Font = [NSFont fontWithName:@"Menlo-Bold" size:11];
+	NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.0f green:0.55f blue:0.8f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+	if (Font) {
+		Attributes[NSFontAttributeName] = Font;
+	}
+	for (NSString *word in blueWords) {
+		keywords[word] = Attributes;
+	}
+	Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.2f green:0.4f blue:0.16f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+	for (NSString *word in greenWords) {
+		keywords[word] = Attributes;
+	}
+	Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.5f green:0.28f blue:0.0f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+	for (NSString *word in orangeWords) {
+		keywords[word] = Attributes;
+	}
+	
+	[(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
+	NSString *Code = [[NSUserDefaults standardUserDefaults] objectForKey:@"LuaConsoleCode"];
+	[_incomingCode setString:Code];
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showLuaConsole"]) {
+		[_consoleWindow orderBack:self];
+	}
 }
 
 - (NSUInteger) interfaceVersion {
@@ -76,50 +128,44 @@ static const struct luaL_Reg printlib [] = {
 	return 1;
 }
 
+- (BOOL)windowShouldClose:(id)window {
+	if (_consoleWindow == window) {
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
+	}
+	return YES;
+}
+
 - (void) showConsole {
-    [consoleWindow makeKeyAndOrderFront:self];
+	if ([(NSWindow <WindowsAdditions>*)_consoleWindow reallyVisible] && [_consoleWindow isKeyWindow]) {
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
+		[_consoleWindow orderOut:self];
+	}
+	else {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showLuaConsole"];
+		[_consoleWindow makeKeyAndOrderFront:self];
+	}
 }
 
 - (IBAction)clearWindow:(id)sender {
-    [luaResult setStringValue:@""];
+    [_luaResult setString:@""];
     [buffer setString:@""];
 }
 
 - (IBAction)compileConsoleCode:(id)sender {
-    NSLog(@"Lua: %@", [incomingCode stringValue]);
+	NSString *Code = [_incomingCode string];
+	NSLog(@"Lua: %@", Code);
     @try {
-        [[NSLua sharedLua] runLuaString:[incomingCode stringValue]];
+		
+        [[NSLua sharedLua] runLuaString:Code];
         NSString *errorBuffer = [[NSLua sharedLua] getErrorBuffer];
         if (errorBuffer && errorBuffer.length > 0) {
             [buffer appendString:errorBuffer];
         }
-        [luaResult setStringValue:buffer];
+        [_luaResult setString:buffer];
+		[[NSUserDefaults standardUserDefaults] setObject:Code forKey:@"LuaConsoleCode"];
     }
     @catch (NSException* e) {
         NSLog(@"Lua failed: %@", e.reason);
     }
-}
-
-// Delegate to make the text entry field wrap. Blegh.
-- (BOOL)control:(NSControl*)control textView:(NSTextView*)textView doCommandBySelector:(SEL)commandSelector
-{
-    BOOL result = NO;
-    
-    if (commandSelector == @selector(insertNewline:))
-    {
-        // new line action:
-        // always insert a line-break character and don’t cause the receiver to end editing
-        [textView insertNewlineIgnoringFieldEditor:self];
-        result = YES;
-    }
-    else if (commandSelector == @selector(insertTab:))
-    {
-        // tab action:
-        // always insert a tab character and don’t cause the receiver to end editing
-        [textView insertTabIgnoringFieldEditor:self];
-        result = YES;
-    }
-    
-    return result;
 }
 @end
