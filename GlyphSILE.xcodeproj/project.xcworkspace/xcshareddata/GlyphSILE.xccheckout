@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B9E862A5-07A4-4F96-940C-CE47F1DEA333</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GlyphSILE</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>70F3A09E8BF38B4FE1AE4A3E6D5E0B1E1959CD17</key>
+		<string>https://github.com/simoncozens/NSLua.git</string>
+		<key>7878BAE1D7E167C60458570301FC1CAF195DCA30</key>
+		<string>https://github.com/schriftgestalt/GlyphSILE.git</string>
+		<key>AA3E03575AF7008D8603531AA66E3ECD73160503</key>
+		<string>https://github.com/lua/lua.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GlyphSILE.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>70F3A09E8BF38B4FE1AE4A3E6D5E0B1E1959CD17</key>
+		<string>../..NSLua/</string>
+		<key>7878BAE1D7E167C60458570301FC1CAF195DCA30</key>
+		<string>../..</string>
+		<key>AA3E03575AF7008D8603531AA66E3ECD73160503</key>
+		<string>../..lua/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/schriftgestalt/GlyphSILE.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7878BAE1D7E167C60458570301FC1CAF195DCA30</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AA3E03575AF7008D8603531AA66E3ECD73160503</string>
+			<key>IDESourceControlWCCName</key>
+			<string>lua</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7878BAE1D7E167C60458570301FC1CAF195DCA30</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MyGlyphsSILE</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>70F3A09E8BF38B4FE1AE4A3E6D5E0B1E1959CD17</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NSLua</string>
+		</dict>
+	</array>
+</dict>
+</plist>
