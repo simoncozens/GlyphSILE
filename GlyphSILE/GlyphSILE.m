@@ -7,7 +7,7 @@
 //
 
 #import "GlyphSILE.h"
-#import "EasyLua.h"
+#import "NSLua.h"
 
 @implementation GlyphSILE
 @synthesize consoleWindow;
@@ -58,7 +58,7 @@ static const struct luaL_Reg printlib [] = {
     }
     [[[mainMenu itemAtIndex:8] submenu] insertItem:consoleMenuItem atIndex:index];
     
-    lua_State *L = [[EasyLua sharedEasyLua] getLuaState];
+    lua_State *L = [[NSLua sharedLua] getLuaState];
     lua_getglobal(L, "_G");
     luaL_setfuncs(L, printlib, 0);
     lua_pop(L, 1);
@@ -88,8 +88,8 @@ static const struct luaL_Reg printlib [] = {
 - (IBAction)compileConsoleCode:(id)sender {
     NSLog(@"Lua: %@", [incomingCode stringValue]);
     @try {
-        [[EasyLua sharedEasyLua] runLuaString:[incomingCode stringValue]];
-        NSString *errorBuffer = [[EasyLua sharedEasyLua] getErrorBuffer];
+        [[NSLua sharedLua] runLuaString:[incomingCode stringValue]];
+        NSString *errorBuffer = [[NSLua sharedLua] getErrorBuffer];
         if (errorBuffer && errorBuffer.length > 0) {
             [buffer appendString:errorBuffer];
         }
