@@ -10,8 +10,8 @@
 #import <GlyphsCore/GlyphsPluginProtocol.h>
 
 @interface GlyphSILE : NSObject <GlyphsPlugin> {}
-@property (nonatomic, weak) IBOutlet NSTextField *incomingCode;
-@property (nonatomic, weak) IBOutlet NSTextField *luaResult;
+@property (nonatomic, assign) IBOutlet NSTextView *incomingCode;
+@property (nonatomic, assign) IBOutlet NSTextView *luaResult;
 @property (nonatomic, weak) IBOutlet NSButton *compileButton;
 @property (nonatomic, weak) IBOutlet NSWindow *consoleWindow;
 
