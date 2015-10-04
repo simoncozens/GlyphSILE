@@ -24,17 +24,6 @@
                 <rect key="frame" x="0.0" y="-1" width="489" height="358"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tgC-2v-FU4">
-                        <rect key="frame" x="310" y="-1" width="73" height="32"/>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M8e-Ws-dgx">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="clearWindow:" target="-2" id="5O6-gP-ug0"/>
-                        </connections>
-                    </button>
                     <splitView dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="IQn-l2-Qxy">
                         <rect key="frame" x="0.0" y="32" width="489" height="326"/>
                         <subviews>
@@ -111,9 +100,26 @@
                         <buttonCell key="cell" type="push" title="Compile" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cEy-8V-eaZ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                         </buttonCell>
                         <connections>
                             <action selector="compileConsoleCode:" target="-2" id="P1T-Sw-hyr"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tgC-2v-FU4">
+                        <rect key="frame" x="310" y="-1" width="73" height="32"/>
+                        <animations/>
+                        <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="M8e-Ws-dgx">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent">k</string>
+                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clearWindow:" target="-2" id="5O6-gP-ug0"/>
                         </connections>
                     </button>
                 </subviews>
@@ -130,6 +136,9 @@
                 <animations/>
             </view>
             <contentBorderThickness minY="33"/>
+            <connections>
+                <outlet property="delegate" destination="-2" id="q0f-tq-xFg"/>
+            </connections>
             <point key="canvasLocation" x="212.5" y="304"/>
         </window>
         <customObject id="r9W-Q3-DVv" customClass="JSTDocument">

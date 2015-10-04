@@ -9,9 +9,13 @@
 #import "GlyphSILE.h"
 #import "NSLua.h"
 
-
+// stub definitions, implemented in Glyphs
 @interface JSTDocument
 - (void) setKeywords:(NSDictionary *)keyWords;
+@end
+
+@protocol WindowsAdditions <NSObject>
+- (BOOL)reallyVisible;
 @end
 
 @implementation GlyphSILE
@@ -114,6 +118,9 @@ static const struct luaL_Reg printlib [] = {
 	[(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
 	NSString *Code = [[NSUserDefaults standardUserDefaults] objectForKey:@"LuaConsoleCode"];
 	[_incomingCode setString:Code];
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showLuaConsole"]) {
+		[_consoleWindow orderBack:self];
+	}
 }
 
 - (NSUInteger) interfaceVersion {
@@ -121,8 +128,22 @@ static const struct luaL_Reg printlib [] = {
 	return 1;
 }
 
+- (BOOL)windowShouldClose:(id)window {
+	if (_consoleWindow == window) {
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
+	}
+	return YES;
+}
+
 - (void) showConsole {
-    [_consoleWindow makeKeyAndOrderFront:self];
+	if ([(NSWindow <WindowsAdditions>*)_consoleWindow reallyVisible] && [_consoleWindow isKeyWindow]) {
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
+		[_consoleWindow orderOut:self];
+	}
+	else {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showLuaConsole"];
+		[_consoleWindow makeKeyAndOrderFront:self];
+	}
 }
 
 - (IBAction)clearWindow:(id)sender {
