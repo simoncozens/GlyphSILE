@@ -1,0 +1,7 @@
+[submodule "lua"]
+	path = lua
+	url = https://github.com/lua/lua.git
+	branch = 5.2.x
+[submodule "NSLua"]
+	path = NSLua
+	url = https://github.com/simoncozens/NSLua.git
