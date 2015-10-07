@@ -14,5 +14,7 @@
 @property (nonatomic, assign) IBOutlet NSTextView *luaResult;
 @property (nonatomic, weak) IBOutlet NSButton *compileButton;
 @property (nonatomic, weak) IBOutlet NSWindow *consoleWindow;
+@property (unsafe_unretained) IBOutlet NSTextView *SILEInput;
+@property (weak) IBOutlet NSView *SILEOutput;
 
 @end

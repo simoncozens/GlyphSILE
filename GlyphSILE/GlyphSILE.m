@@ -8,6 +8,7 @@
 
 #import "GlyphSILE.h"
 #import "NSLua.h"
+#import "LuaBridgedFunctions.h"
 
 // stub definitions, implemented in Glyphs
 @interface JSTDocument
@@ -54,6 +55,7 @@ static const struct luaL_Reg printlib [] = {
 
 - (void) loadPlugin {
     [NSBundle loadNibNamed:@"LuaConsole" owner:self];
+    [NSBundle loadNibNamed:@"SILEPreview" owner:self];
     
     NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
     NSMenuItem *consoleMenuItem = [[NSMenuItem alloc] initWithTitle:@"Lua Console" action:@selector(showConsole) keyEquivalent:@""];
@@ -73,13 +75,16 @@ static const struct luaL_Reg printlib [] = {
     lua_getglobal(L, "_G");
     luaL_setfuncs(L, printlib, 0);
     lua_pop(L, 1);
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *path = [bundle pathForResource:@"GlyphsApp" ofType:@"lua"];
-    if (luaL_dofile(L, [path UTF8String]))
-    {
-        const char *err = lua_tostring(L, -1);
-        NSLog(@"error while loading Glyphs API: %s", err);
-    }
+    [[NSLua sharedLua] runLuaBundleFile:@"GlyphsApp.lua"];
+    [[NSLua sharedLua] runLuaBundleFile:@"GlyphSILE.lua"];
+
+//    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+//    NSString *path = [bundle pathForResource:@"GlyphsApp" ofType:@"lua"];
+//    if (luaL_dofile(L, [path UTF8String]))
+//    {
+//        const char *err = lua_tostring(L, -1);
+//        NSLog(@"error while loading Glyphs API: %s", err);
+//    }
 	
 	
 	NSArray *blueWords = @[@"False", @"True", @"None", @"print", @"and", @"del", @"from", @"not", @"while", @"as", @"elif", @"global", @"or", @"with", @"assert", @"else", @"if", @"pass", @"yield", @"break", @"except", @"import", @"print", @"class", @"exec", @"in", @"raise", @"continue", @"finally", @"is", @"return", @"function", @"for", @"lambda", @"try"];
@@ -167,5 +172,16 @@ static const struct luaL_Reg printlib [] = {
     @catch (NSException* e) {
         NSLog(@"Lua failed: %@", e.reason);
     }
+}
+- (IBAction)drawSILEPreview:(id)sender {
+    NSLog(@"dsp called");
+    NSString *code = [_SILEInput string];
+    NSView *view = _SILEOutput;
+    lua_State *L = [[NSLua sharedLua] getLuaState];
+    lua_getglobal(L, "doGlyphSILE");
+    lua_pushstring(L, [code UTF8String]);
+    to_lua(L, view, true);
+    if (lua_pcall(L, 2, 1, 0) != 0)
+        NSLog(@"error running function `f': %s", lua_tostring(L, -1));
 }
 @end
