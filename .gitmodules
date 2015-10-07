@@ -5,3 +5,7 @@
 [submodule "NSLua"]
 	path = NSLua
 	url = https://github.com/simoncozens/NSLua.git
+[submodule "sile"]
+	path = sile
+	url = https://github.com/simoncozens/sile.git
+	branch = harfbuzz-ot-features

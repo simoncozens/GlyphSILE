@@ -12,6 +12,11 @@
 		F42900971BB513B70047C6CF /* GlyphSILE-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F42900961BB513B70047C6CF /* GlyphSILE-Info.plist */; };
 		F429009A1BB513B70047C6CF /* GlyphSILE.m in Sources */ = {isa = PBXBuildFile; fileRef = F42900991BB513B70047C6CF /* GlyphSILE.m */; };
 		F429009D1BB513B70047C6CF /* GlyphsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F429009C1BB513B70047C6CF /* GlyphsCore.framework */; };
+		F43BEED41BC55C5E005BFC39 /* classes in Resources */ = {isa = PBXBuildFile; fileRef = F43BEECF1BC55C5E005BFC39 /* classes */; };
+		F43BEED51BC55C5E005BFC39 /* core in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED01BC55C5E005BFC39 /* core */; };
+		F43BEED61BC55C5E005BFC39 /* languages in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED11BC55C5E005BFC39 /* languages */; };
+		F43BEED71BC55C5E005BFC39 /* lua-libraries in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED21BC55C5E005BFC39 /* lua-libraries */; };
+		F43BEED81BC55C5E005BFC39 /* packages in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED31BC55C5E005BFC39 /* packages */; };
 		F441103A1BC3F75500E38A84 /* SILEPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44110391BC3F75500E38A84 /* SILEPreview.xib */; settings = {ASSET_TAGS = (); }; };
 		F47783801BB5FCB800B55550 /* LuaConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = F477837F1BB5FCB800B55550 /* LuaConsole.xib */; };
 		F47783821BB7FC9900B55550 /* GlyphsApp.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47783811BB7FC9900B55550 /* GlyphsApp.lua */; };
@@ -76,6 +81,12 @@
 		F42900991BB513B70047C6CF /* GlyphSILE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlyphSILE.m; sourceTree = "<group>"; };
 		F429009C1BB513B70047C6CF /* GlyphsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GlyphsCore.framework; path = /Applications/Glyphs.app/Contents/Frameworks/GlyphsCore.framework; sourceTree = "<absolute>"; };
 		F429009E1BB513B70047C6CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F43BEECD1BC55C3F005BFC39 /* sile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sile; sourceTree = "<group>"; };
+		F43BEECF1BC55C5E005BFC39 /* classes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = classes; path = sile/classes; sourceTree = "<group>"; };
+		F43BEED01BC55C5E005BFC39 /* core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = core; path = sile/core; sourceTree = "<group>"; };
+		F43BEED11BC55C5E005BFC39 /* languages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = languages; path = sile/languages; sourceTree = "<group>"; };
+		F43BEED21BC55C5E005BFC39 /* lua-libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "lua-libraries"; path = "sile/lua-libraries"; sourceTree = "<group>"; };
+		F43BEED31BC55C5E005BFC39 /* packages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = packages; path = sile/packages; sourceTree = "<group>"; };
 		F44110391BC3F75500E38A84 /* SILEPreview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SILEPreview.xib; sourceTree = "<group>"; };
 		F477837F1BB5FCB800B55550 /* LuaConsole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LuaConsole.xib; sourceTree = "<group>"; };
 		F47783811BB7FC9900B55550 /* GlyphsApp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GlyphsApp.lua; sourceTree = "<group>"; };
@@ -178,6 +189,12 @@
 		F42900851BB513B70047C6CF = {
 			isa = PBXGroup;
 			children = (
+				F43BEECF1BC55C5E005BFC39 /* classes */,
+				F43BEED01BC55C5E005BFC39 /* core */,
+				F43BEED11BC55C5E005BFC39 /* languages */,
+				F43BEED21BC55C5E005BFC39 /* lua-libraries */,
+				F43BEED31BC55C5E005BFC39 /* packages */,
+				F43BEECD1BC55C3F005BFC39 /* sile */,
 				F47CE58C1BC158A7009C76C1 /* NSLua */,
 				F47CE5141BC15889009C76C1 /* lua */,
 				F42900931BB513B70047C6CF /* GlyphSILE */,
@@ -401,6 +418,11 @@
 				F47783821BB7FC9900B55550 /* GlyphsApp.lua in Resources */,
 				F47CE59A1BC158A7009C76C1 /* LuaBridge.lua in Resources */,
 				F47CE5621BC15889009C76C1 /* luac.1 in Resources */,
+				F43BEED41BC55C5E005BFC39 /* classes in Resources */,
+				F43BEED51BC55C5E005BFC39 /* core in Resources */,
+				F43BEED61BC55C5E005BFC39 /* languages in Resources */,
+				F43BEED71BC55C5E005BFC39 /* lua-libraries in Resources */,
+				F43BEED81BC55C5E005BFC39 /* packages in Resources */,
 				F47CE5681BC15889009C76C1 /* README in Resources */,
 				F47CE5991BC158A7009C76C1 /* LICENSE in Resources */,
 				F47CE5641BC15889009C76C1 /* manual.html in Resources */,
