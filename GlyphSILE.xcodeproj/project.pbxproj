@@ -567,6 +567,11 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "~/Library/Application Support/Glyphs/Plugins";
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					LUA_USE_MACOSX,
+				);
 				INFOPLIST_FILE = GlyphSILE/Info.plist;
 				INSTALL_PATH = /;
 				LIBRARY_SEARCH_PATHS = (
@@ -584,6 +589,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
+				GCC_PREPROCESSOR_DEFINITIONS = LUA_USE_MACOSX;
 				INFOPLIST_FILE = GlyphSILE/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
