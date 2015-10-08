@@ -1,6 +1,34 @@
 Glyphs = NSApplication.sharedApplication
 -- currentDocument
--- currentFont
+local object_with_pseudo_mt = {
+  __tostring = function (o) return "<"..(o.Class)..">" end,
+  __index = function(inObject, inKey)
+    local pseudo = rawget(inObject,"pseudomembers")
+    if pseudo and pseudo[inKey] then return pseudo[inKey](object) end
+    local p = objc.getproperty(unwrap(inObject), inKey)
+    if p then return p end
+    inKey = inKey:gsub("_",":")
+    p = objc.hasmethod(unwrap(inObject), inKey)
+    if p then
+      p = { name = inKey, target = inObject }
+      setmetatable(p, method_mt)
+      return p
+    end
+  end,
+  __newindex =  function(inObject, inKey, inValue)
+    if (objc.getproperty(unwrap(inObject), inKey)) then
+        return sendMesg(inObject["WrappedObject"], 'setValue:forKeyPath:', inValue, inKey)
+    end
+    rawset(inObject, inKey, inValue)
+  end
+}
+setmetatable(Glyphs, object_with_pseudo_mt)
+
+Glyphs.pseudomembers = {
+  currentDocument = function() return NSApplication.sharedApplication.currentFontDocument end,
+  font = function () return NSApplication.sharedApplication.currentFontDocument and NSApplication.sharedApplication.currentFontDocument.font end
+}
+
 Glyphs.scriptAbbrevations =  GSGlyphsInfo.scriptAbrevations
 Glyphs.scriptSuffixes = GSGlyphsInfo.scriptSuffixes
 Glyphs.languageScripts = GSGlyphsInfo.languageScripts
@@ -153,3 +181,4 @@ local glyphProxyMt = {
   end
 }
 
+-- XXX glyph.layers should produce an array, not a dictionary (See MGOrderedDictionary)
