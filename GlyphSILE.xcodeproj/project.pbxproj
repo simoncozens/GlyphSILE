@@ -17,6 +17,7 @@
 		F43BEED61BC55C5E005BFC39 /* languages in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED11BC55C5E005BFC39 /* languages */; };
 		F43BEED71BC55C5E005BFC39 /* lua-libraries in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED21BC55C5E005BFC39 /* lua-libraries */; };
 		F43BEED81BC55C5E005BFC39 /* packages in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED31BC55C5E005BFC39 /* packages */; };
+		F43BEEDC1BC651CD005BFC39 /* shared-libraries in Resources */ = {isa = PBXBuildFile; fileRef = F43BEEDB1BC651CD005BFC39 /* shared-libraries */; settings = {ASSET_TAGS = (); }; };
 		F441103A1BC3F75500E38A84 /* SILEPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44110391BC3F75500E38A84 /* SILEPreview.xib */; settings = {ASSET_TAGS = (); }; };
 		F47783801BB5FCB800B55550 /* LuaConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = F477837F1BB5FCB800B55550 /* LuaConsole.xib */; };
 		F47783821BB7FC9900B55550 /* GlyphsApp.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47783811BB7FC9900B55550 /* GlyphsApp.lua */; };
@@ -87,6 +88,7 @@
 		F43BEED11BC55C5E005BFC39 /* languages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = languages; path = sile/languages; sourceTree = "<group>"; };
 		F43BEED21BC55C5E005BFC39 /* lua-libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "lua-libraries"; path = "sile/lua-libraries"; sourceTree = "<group>"; };
 		F43BEED31BC55C5E005BFC39 /* packages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = packages; path = sile/packages; sourceTree = "<group>"; };
+		F43BEEDB1BC651CD005BFC39 /* shared-libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "shared-libraries"; sourceTree = "<group>"; };
 		F44110391BC3F75500E38A84 /* SILEPreview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SILEPreview.xib; sourceTree = "<group>"; };
 		F477837F1BB5FCB800B55550 /* LuaConsole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LuaConsole.xib; sourceTree = "<group>"; };
 		F47783811BB7FC9900B55550 /* GlyphsApp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GlyphsApp.lua; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		F42900851BB513B70047C6CF = {
 			isa = PBXGroup;
 			children = (
+				F43BEEDB1BC651CD005BFC39 /* shared-libraries */,
 				F43BEECF1BC55C5E005BFC39 /* classes */,
 				F43BEED01BC55C5E005BFC39 /* core */,
 				F43BEED11BC55C5E005BFC39 /* languages */,
@@ -425,6 +428,7 @@
 				F43BEED81BC55C5E005BFC39 /* packages in Resources */,
 				F47CE5681BC15889009C76C1 /* README in Resources */,
 				F47CE5991BC158A7009C76C1 /* LICENSE in Resources */,
+				F43BEEDC1BC651CD005BFC39 /* shared-libraries in Resources */,
 				F47CE5641BC15889009C76C1 /* manual.html in Resources */,
 				F47CE5661BC15889009C76C1 /* readme.html in Resources */,
 				F441103A1BC3F75500E38A84 /* SILEPreview.xib in Resources */,

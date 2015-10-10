@@ -1,10 +1,26 @@
 Glyphs = NSApplication.sharedApplication
 -- currentDocument
+local pseudomembers = {}
+local method_mt = {
+  __tostring = function(o)
+      return "<"..(o.name).." on "..tostring(o.target)..">"
+  end,
+  __call = function (o, target, ...)
+    -- Having an explicit target here (even though we know the target)
+    -- allows us to use Lua-like "foo:bar()" syntax
+    local ret = sendMesg(unwrap(target), o.name, ...)
+    if type(ret) == "userdata" then
+      return wrap(ret)
+    else
+      return ret
+    end
+  end
+}
 local object_with_pseudo_mt = {
   __tostring = function (o) return "<"..(o.Class)..">" end,
   __index = function(inObject, inKey)
-    local pseudo = rawget(inObject,"pseudomembers")
-    if pseudo and pseudo[inKey] then return pseudo[inKey](object) end
+    local pseudo = rawget(pseudomembers, inObject.Class)
+    if pseudo and pseudo[inKey] then return pseudo[inKey](inObject) end
     local p = objc.getproperty(unwrap(inObject), inKey)
     if p then return p end
     inKey = inKey:gsub("_",":")
@@ -22,9 +38,18 @@ local object_with_pseudo_mt = {
     rawset(inObject, inKey, inValue)
   end
 }
+
+-- Rewrite NSLua's wrap function
+function wrap(obj)
+    local o = {}
+    o["WrappedObject"] = obj;
+    o["Class"] = objc.classof(obj);
+    setmetatable(o, object_with_pseudo_mt)
+    return o
+end
 setmetatable(Glyphs, object_with_pseudo_mt)
 
-Glyphs.pseudomembers = {
+pseudomembers.GSApplication = {
   currentDocument = function() return NSApplication.sharedApplication.currentFontDocument end,
   font = function () return NSApplication.sharedApplication.currentFontDocument and NSApplication.sharedApplication.currentFontDocument.font end
 }
@@ -177,8 +202,31 @@ Glyphs.fonts = fontProxy
 local glyphProxyMt = {
   __index = function (t,k)
     if type(k) == "string" then return rawget(t,"owner"):glyphForName_(k) end
-    return rawget(t, k)
-  end
+    return rawget(t,"owner"):glyphAtIndex_(k-1)
+  end,
+  __len = function (t) return rawget(t,"owner").count end
 }
 
+local fontFontMasterMt = {
+  __index = function(t,k)
+    if type(k)=="number" then return rawget(t,"owner"):fontMasterAtIndex_(k-1) end
+    return rawget(t,"owner"):fontMasterForId_(k)
+  end,
+  __len = function (t) return rawget(t,"owner").countOfFontMasters end
+  -- set, delete, etc.
+}
+
+pseudomembers.GSFont = {
+  glyphs = function (self)
+    local glyphProxy = { owner = self }
+    setmetatable(glyphProxy, glyphProxyMt)
+    return glyphProxy
+  end,
+  upm = function (self) return self.unitsPerEm end,
+  masters = function (self)
+    local masterProxy = { owner = self }
+    setmetatable(masterProxy, fontFontMasterMt)
+    return masterProxy
+  end
+}
 -- XXX glyph.layers should produce an array, not a dictionary (See MGOrderedDictionary)

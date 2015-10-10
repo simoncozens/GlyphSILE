@@ -10,6 +10,15 @@
 #import "NSLua.h"
 #import "LuaBridgedFunctions.h"
 
+// Horrible private things
+@interface GSApplication : NSApplication
+@property (weak, nonatomic, nullable) GSDocument* currentFontDocument;
+@end
+
+@interface GSDocument : NSDocument
+@property (weak, nonatomic, nullable) GSFont* font;
+@end
+
 // stub definitions, implemented in Glyphs
 @interface JSTDocument
 - (void) setKeywords:(NSDictionary *)keyWords;
@@ -177,6 +186,13 @@ static const struct luaL_Reg printlib [] = {
     NSLog(@"dsp called");
     NSString *code = [_SILEInput string];
     NSView *view = _SILEOutput;
+    
+    /* We can't pass a null pointer from Lua to C, so need to call this here */
+    GSFont *f = [[[NSApplication sharedApplication] currentFontDocument] font];
+    if (![f tempOTFFont]) {
+        NSError *Error = nil;
+        [f compileTempFontError:&Error];
+    }
     lua_State *L = [[NSLua sharedLua] getLuaState];
     lua_getglobal(L, "doGlyphSILE");
     lua_pushstring(L, [code UTF8String]);

@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <GlyphsCore/GlyphsPluginProtocol.h>
+#import <GlyphsCore/GSFont.h>
 
 @interface GlyphSILE : NSObject <GlyphsPlugin, NSWindowDelegate> {}
 @property (nonatomic, assign) IBOutlet NSTextView *incomingCode;
