@@ -21,7 +21,6 @@
 }
 
 - (void)drawGSLayer:(GSLayer *)l atX:(float)x atY:(float)y withSize:(float)s {
-    NSLog(@"I have a layer %@, at %f %f", l, x,y);
     NSAffineTransform *transform = [NSAffineTransform transform];
     [transform translateXBy:x yBy:y];
     [transform scaleBy: s/1000.0];
