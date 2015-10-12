@@ -56,7 +56,6 @@ SILE.outputter = { -- Blegh
   outputHbox = function (value,w)
     if value.complex then
       for i=1,#(value.items) do
-        print("Drawing", tostring(value.items[i]))
         local glyph = value.items[i].layer
         if glyph then
           globalv:drawGSLayer_atX_atY_withSize_(glyph, cursorX + value.items[i].lsb, cursorY, value.items[i].size)
@@ -81,9 +80,8 @@ doSILEDisplay = function()
   SILE.documentState.documentClass = plain;
   local ff = plain:init()
   SILE.typesetter:init(ff)
-  SILE.typesetter:typeset(globals)
+  SILE.doTexlike(globals)
   SILE.typesetter:leaveHmode()
-  print("Calling output")
   SILE.typesetter:chuck() -- XXX
   SILE.typesetter:debugState()
   plain:finish()
