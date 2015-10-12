@@ -26,7 +26,7 @@
                     <splitView dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="w9Z-fw-vQe">
                         <rect key="frame" x="0.0" y="32" width="489" height="326"/>
                         <subviews>
-                            <customView fixedFrame="YES" id="eoY-hM-guE">
+                            <customView fixedFrame="YES" id="eoY-hM-guE" customClass="SILEPreviewController">
                                 <rect key="frame" x="0.0" y="0.0" width="489" height="275"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>

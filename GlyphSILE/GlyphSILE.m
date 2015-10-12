@@ -185,7 +185,7 @@ static const struct luaL_Reg printlib [] = {
 - (IBAction)drawSILEPreview:(id)sender {
     NSLog(@"dsp called");
     NSString *code = [_SILEInput string];
-    NSView *view = _SILEOutput;
+    SILEPreviewController *view = _SILEOutput;
     
     /* We can't pass a null pointer from Lua to C, so need to call this here */
     GSFont *f = [[[NSApplication sharedApplication] currentFontDocument] font];
@@ -200,4 +200,5 @@ static const struct luaL_Reg printlib [] = {
     if (lua_pcall(L, 2, 1, 0) != 0)
         NSLog(@"error running function `f': %s", lua_tostring(L, -1));
 }
+
 @end

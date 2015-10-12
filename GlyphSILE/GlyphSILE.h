@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <GlyphsCore/GlyphsPluginProtocol.h>
 #import <GlyphsCore/GSFont.h>
+#import "SILEPreviewController.h"
 
 @interface GlyphSILE : NSObject <GlyphsPlugin, NSWindowDelegate> {}
 @property (nonatomic, assign) IBOutlet NSTextView *incomingCode;
@@ -16,6 +17,6 @@
 @property (nonatomic, weak) IBOutlet NSButton *compileButton;
 @property (nonatomic, weak) IBOutlet NSWindow *consoleWindow;
 @property (unsafe_unretained) IBOutlet NSTextView *SILEInput;
-@property (weak) IBOutlet NSView *SILEOutput;
+@property (weak) IBOutlet SILEPreviewController *SILEOutput;
 
 @end
