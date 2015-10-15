@@ -1,5 +1,5 @@
 //
-//  SILEPreviewController.h
+//  SILEPreviewView.h
 //  GlyphSILE
 //
 //  Created by Simon Cozens on 11/10/2015.
@@ -12,7 +12,7 @@
 #import <GlyphsCore/GSLayer.h>
 #import <GlyphsCore/GSComponent.h>
 
-@interface SILEPreviewController : NSView
+@interface SILEPreviewView : NSView
 
 -(void)drawGSLayer:(GSLayer*)l atX:(float)x atY:(float)y withSize:(float)s;
 

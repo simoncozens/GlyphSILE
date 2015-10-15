@@ -1,22 +1,24 @@
 //
-//  SILEPreviewController.m
+//  SILEPreviewView.m
 //  GlyphSILE
 //
 //  Created by Simon Cozens on 11/10/2015.
 //  Copyright © 2015 Simon Cozens. All rights reserved.
 //
 
-#import "SILEPreviewController.h"
+#import "SILEPreviewView.h"
 #import "NSLua.h"
+#import "LuaBridgedFunctions.h"
 
 @import AppKit;
 
-@implementation SILEPreviewController
+@implementation SILEPreviewView
 
 - (void)drawRect:(NSRect)pNSRect {
     lua_State *L = [[NSLua sharedLua] getLuaState];
     lua_getglobal(L, "doSILEDisplay");
-    if (lua_pcall(L, 0, 0, 0) != 0)
+    to_lua(L, self, 1);
+    if (lua_pcall(L, 1, 0, 0) != 0)
         NSLog(@"error running function `f': %s", lua_tostring(L, -1));
 }
 

@@ -39,16 +39,17 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
   end
 }
 
-SILE.shaper = SILE.shapers.Glyphs
-
 local cursorX
 local cursorY
-SILE.outputter = { -- Blegh
+if (not SILE.outputters) then SILE.outputters = {} end
+SILE.outputters.Glyphs = {
+  nsview = nil,
+  height = nil,
   init = function () end,
   finish = function () end,
   moveTo = function (x,y)
     cursorX = x
-    cursorY = globalv.frame.size.height - y
+    cursorY = SILE.outputter.height - y
   end,
   setFont = function (options)
     -- later
@@ -58,7 +59,7 @@ SILE.outputter = { -- Blegh
       for i=1,#(value.items) do
         local glyph = value.items[i].layer
         if glyph then
-          globalv:drawGSLayer_atX_atY_withSize_(glyph, cursorX + value.items[i].lsb, cursorY, value.items[i].size)
+          SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(glyph, cursorX + value.items[i].lsb, cursorY, value.items[i].size)
         end
         cursorX = cursorX + value.items[i].width
       end
@@ -67,20 +68,27 @@ SILE.outputter = { -- Blegh
   end
 }
 
+SILE.shaper = SILE.shapers.Glyphs
+SILE.outputter = SILE.outputters.Glyphs
+
+local stringToTypeset
+
 doGlyphSILE = function(s, v)
-  globalv = v
-  globals = s
-  globalv:setNeedsDisplay_(true)
+  stringToTypeset = s
+  SILE.outputters.Glyphs.nsview:setNeedsDisplay_(true)
 end
 
-doSILEDisplay = function()
+doSILEDisplay = function(nsview)
+  SILE.outputters.Glyphs.nsview = nsview
+  if not stringToTypeset then return end
   local plain = require("classes/plain")
-  local size = globalv.frame.size
+  local size = nsview.frame.size
   plain.options.papersize(size.width.."pt x "..size.height.."pt")
+  SILE.outputters.Glyphs.height = size.height
   SILE.documentState.documentClass = plain;
   local ff = plain:init()
   SILE.typesetter:init(ff)
-  SILE.doTexlike(globals)
+  SILE.doTexlike(stringToTypeset)
   SILE.typesetter:leaveHmode()
   SILE.typesetter:chuck() -- XXX
   SILE.typesetter:debugState()
