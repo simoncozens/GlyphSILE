@@ -79,22 +79,26 @@ static const struct luaL_Reg printlib [] = {
         index++;
     }
     [[[mainMenu itemAtIndex:8] submenu] insertItem:consoleMenuItem atIndex:index];
-    
+
+    NSMenuItem *consoleMenuItem2 = [[NSMenuItem alloc] initWithTitle:@"SILE Preview" action:@selector(showSILEPreview) keyEquivalent:@""];
+    [consoleMenuItem2 setTarget:self];
+    index = 0;
+    numberOfSeperators = 0;
+    for (NSMenuItem *i in [[[mainMenu itemAtIndex:8] submenu] itemArray]) {
+        if ([i isSeparatorItem]) {
+            numberOfSeperators++;
+            if (numberOfSeperators == 2) break;
+        }
+        index++;
+    }
+    [[[mainMenu itemAtIndex:8] submenu] insertItem:consoleMenuItem2 atIndex:index];
+
     lua_State *L = [[NSLua sharedLua] getLuaState];
     lua_getglobal(L, "_G");
     luaL_setfuncs(L, printlib, 0);
     lua_pop(L, 1);
     [[NSLua sharedLua] runLuaBundleFile:@"GlyphsApp.lua"];
     [[NSLua sharedLua] runLuaBundleFile:@"GlyphSILE.lua"];
-
-//    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-//    NSString *path = [bundle pathForResource:@"GlyphsApp" ofType:@"lua"];
-//    if (luaL_dofile(L, [path UTF8String]))
-//    {
-//        const char *err = lua_tostring(L, -1);
-//        NSLog(@"error while loading Glyphs API: %s", err);
-//    }
-	
 	
 	NSArray *blueWords = @[@"False", @"True", @"None", @"print", @"and", @"del", @"from", @"not", @"while", @"as", @"elif", @"global", @"or", @"with", @"assert", @"else", @"if", @"pass", @"yield", @"break", @"except", @"import", @"print", @"class", @"exec", @"in", @"raise", @"continue", @"finally", @"is", @"return", @"function", @"for", @"lambda", @"try"];
 	
@@ -135,6 +139,10 @@ static const struct luaL_Reg printlib [] = {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showLuaConsole"]) {
 		[_consoleWindow orderBack:self];
 	}
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showSILEPreview"]) {
+        [_silePreviewWindow orderBack:self];
+    }
+
 }
 
 - (NSUInteger) interfaceVersion {
@@ -146,7 +154,10 @@ static const struct luaL_Reg printlib [] = {
 	if (_consoleWindow == window) {
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
 	}
-	return YES;
+    if (_silePreviewWindow == window) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showSILEPreview"];
+    }
+    return YES;
 }
 
 - (void) showConsole {
@@ -158,6 +169,17 @@ static const struct luaL_Reg printlib [] = {
 		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showLuaConsole"];
 		[_consoleWindow makeKeyAndOrderFront:self];
 	}
+}
+
+- (void) showSILEPreview {
+    if ([(NSWindow <WindowsAdditions>*)_silePreviewWindow reallyVisible] && [_silePreviewWindow isKeyWindow]) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showSILEPreview"];
+        [_silePreviewWindow orderOut:self];
+    }
+    else {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showSILEPreview"];
+        [_silePreviewWindow makeKeyAndOrderFront:self];
+    }
 }
 
 - (IBAction)clearWindow:(id)sender {
