@@ -72,10 +72,11 @@ SILE.shaper = SILE.shapers.Glyphs
 SILE.outputter = SILE.outputters.Glyphs
 
 local stringToTypeset
-
-doGlyphSILE = function(s, v)
+local fontsize
+doGlyphSILE = function(s, v, fs)
   stringToTypeset = s
   SILE.outputters.Glyphs.nsview:setNeedsDisplay_(true)
+  fontsize = fs
 end
 
 doSILEDisplay = function(nsview)
@@ -88,6 +89,7 @@ doSILEDisplay = function(nsview)
   SILE.documentState.documentClass = plain;
   local ff = plain:init()
   SILE.typesetter:init(ff)
+  if fontsize > 0 then SILE.settings.set("font.size", fontsize) end
   SILE.doTexlike(stringToTypeset)
   SILE.typesetter:leaveHmode()
   SILE.typesetter:chuck() -- XXX

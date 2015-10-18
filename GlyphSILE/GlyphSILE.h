@@ -19,5 +19,5 @@
 @property (nonatomic, weak) IBOutlet NSWindow *silePreviewWindow;
 @property (unsafe_unretained) IBOutlet NSTextView *SILEInput;
 @property (weak) IBOutlet SILEPreviewView *SILEOutput;
-
+@property (weak) IBOutlet NSComboBoxCell *fontSizeSelection;
 @end

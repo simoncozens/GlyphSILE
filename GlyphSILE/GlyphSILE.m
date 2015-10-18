@@ -205,7 +205,6 @@ static const struct luaL_Reg printlib [] = {
     }
 }
 - (IBAction)drawSILEPreview:(id)sender {
-    NSLog(@"dsp called");
     NSString *code = [_SILEInput string];
     SILEPreviewView *view = _SILEOutput;
     
@@ -219,7 +218,8 @@ static const struct luaL_Reg printlib [] = {
     lua_getglobal(L, "doGlyphSILE");
     lua_pushstring(L, [code UTF8String]);
     to_lua(L, view, true);
-    if (lua_pcall(L, 2, 1, 0) != 0)
+    lua_pushinteger(L, [_fontSizeSelection integerValue]);
+    if (lua_pcall(L, 3, 1, 0) != 0)
         NSLog(@"error running function `f': %s", lua_tostring(L, -1));
 }
 
