@@ -212,10 +212,8 @@ static const struct luaL_Reg printlib [] = {
     
     /* We can't pass a null pointer from Lua to C, so need to call this here */
     GSFont *f = [[[NSApplication sharedApplication] currentFontDocument] font];
-    if (![f tempOTFFont]) {
-        NSError *Error = nil;
-        [f compileTempFontError:&Error];
-    }
+    NSError *Error = nil;
+    [f compileTempFontError:&Error]; /* Always compile, may have changed */
     lua_State *L = [[NSLua sharedLua] getLuaState];
     lua_getglobal(L, "doGlyphSILE");
     lua_pushstring(L, [code UTF8String]);
