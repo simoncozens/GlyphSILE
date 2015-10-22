@@ -68,7 +68,7 @@ SILE.outputters.Glyphs = {
       for i=1,#(value.items) do
         local glyph = value.items[i].layer
         if glyph then
-          SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(glyph, cursorX + value.items[i].lsb, cursorY, value.items[i].size)
+          SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(glyph, cursorX, cursorY, value.items[i].size)
         else
           SILE.outputter.nsview:drawGlyph_atX_atY_(value.items[i].codepoint, cursorX, cursorY)
         end
