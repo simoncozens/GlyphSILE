@@ -11,17 +11,17 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
     nnodeValue.complex = true
   end,
 
-  shapeToken = function (self, text, options)
-    options = SILE.font.loadDefaults(options)
+  shapeToken = function (self, text, orig)
+    options = SILE.font.loadDefaults(orig)
     if not options.font:match("^Glyphs:") then -- abuse
-      return SILE.shapers.harfbuzz:shapeToken(text, options)
+      return SILE.shapers.harfbuzz:shapeToken(text, orig)
     end
     local font = Glyphs.font
     options.filename = font.tempOTFFont
     local scale = options.size / font.upm -- design size?
     local master = font.masters[1] -- XXX
-
     local items = SILE.shapers.harfbuzz:shapeToken(text, options)
+
     for i =1,#items do
       local g = font.glyphs[items[i].name]
       if g then
