@@ -103,10 +103,9 @@ static const struct luaL_Reg printlib [] = {
     [[NSLua sharedLua] runLuaBundleFile:@"GlyphsApp.lua"];
     [[NSLua sharedLua] runLuaBundleFile:@"GlyphSILE.lua"];
 	
-	NSArray *blueWords = @[@"False", @"True", @"None", @"print", @"and", @"del", @"from", @"not", @"while", @"as", @"elif", @"global", @"or", @"with", @"assert", @"else", @"if", @"pass", @"yield", @"break", @"except", @"import", @"print", @"class", @"exec", @"in", @"raise", @"continue", @"finally", @"is", @"return", @"function", @"for", @"lambda", @"try"];
-	
+	NSArray *blueWords = @[@"and", @"break", @"do", @"else", @"elseif", @"end", @"false", @"for", @"function", @"goto", @"if", @"in", @"local", @"nil", @"not", @"or", @"repeat", @"return", @"then", @"true", @"until", @"while"];
 	NSArray *greenWords = @[@"glyphs", @"components", @"anchors", @"kerning", @"Layer", @"Glyph", @"Node", @"Anchor", @"Component"];
-	NSArray *orangeWords = @[@"all", @"abs", @"any", @"apply", @"callable", @"chr", @"cmp", @"coerce", @"compile", @"delattr", @"dir", @"divmod", @"eval", @"execfile", @"filter", @"getattr", @"globals", @"hasattr", @"hash", @"hex", @"id", @"input", @"intern", @"isinstance", @"issubclass", @"iter", @"len", @"locals", @"map", @"max", @"min", @"oct", @"ord", @"pow", @"range", @"raw_input", @"reduce", @"reload", @"repr", @"round", @"setattr", @"sorted", @"sum", @"unichr", @"vars", @"zip", @"basestring", @"bool", @"buffer", @"classmethod", @"complex", @"dict", @"enumerate", @"file", @"float", @"frozenset", @"int", @"list", @"long", @"object", @"open", @"property", @"reversed", @"set", @"slice", @"staticmethod", @"str", @"super", @"tuple", @"type", @"unicode", @"xrange"];
+	NSArray *orangeWords = @[];
 
 	
 	NSMutableDictionary *keywords = [[NSMutableDictionary alloc] init];
