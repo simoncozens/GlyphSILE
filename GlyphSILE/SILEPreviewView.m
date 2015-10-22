@@ -69,7 +69,6 @@ CTFontRef lastFont;
 /* Not optimized */
 - (void)drawGlyph:(unsigned int)gid atX:(float)x atY:(float)y
 {
-    assert(lastFont);
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1.0f, 1.0f));
     CGPoint pos[] = { CGPointMake(x,y) };
