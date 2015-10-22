@@ -31,6 +31,7 @@
 @implementation GlyphSILE
 
 NSMutableString *buffer;
+NSTextView *luaResult;
 
 - (id) init {
     self = [super init];
@@ -54,6 +55,7 @@ int lua_my_print(lua_State* L) {
         if (i <nargs) [buffer appendString:@"\t"];
     }
     [buffer appendString:@"\n"];
+    [luaResult setString:buffer];
     return 0;
 }
 
@@ -68,6 +70,7 @@ static const struct luaL_Reg printlib [] = {
     
     NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
     NSMenuItem *consoleMenuItem = [[NSMenuItem alloc] initWithTitle:@"Lua Console" action:@selector(showConsole) keyEquivalent:@""];
+    luaResult = _luaResult;
     [consoleMenuItem setTarget:self];
     int index = 0;
     int numberOfSeperators = 0;
