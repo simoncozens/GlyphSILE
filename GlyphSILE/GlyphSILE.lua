@@ -13,10 +13,12 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
 
   shapeToken = function (self, text, options)
     options = SILE.font.loadDefaults(options)
+    if not options.font:match("^Glyphs:") then -- abuse
+      return SILE.shapers.harfbuzz:shapeToken(text, options)
+    end
     local font = Glyphs.font
     options.filename = font.tempOTFFont
     local scale = options.size / font.upm -- design size?
-    options.master = 'Light' --- XXX
     local master = font.masters[1] -- XXX
 
     local items = SILE.shapers.harfbuzz:shapeToken(text, options)
@@ -42,16 +44,23 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
 local cursorX
 local cursorY
 if (not SILE.outputters) then SILE.outputters = {} end
+local lastkey
 SILE.outputters.Glyphs = {
   nsview = nil,
   height = nil,
   init = function () end,
   finish = function () end,
+  newPage = function () lastkey = nil end,
   moveTo = function (x,y)
     cursorX = x
     cursorY = SILE.outputter.height - y
   end,
   setFont = function (options)
+    -- if SILE.font._key(options) == lastkey then return end
+    lastkey = SILE.font._key(options)
+    font = SILE.font.cache(options, SILE.shaper.getFace)
+    font.data = nil
+    SILE.outputters.Glyphs.nsview:loadFontFromPath_withHeight_(font.filename, font.pointsize)
     -- later
   end,
   outputHbox = function (value,w)
@@ -60,6 +69,8 @@ SILE.outputters.Glyphs = {
         local glyph = value.items[i].layer
         if glyph then
           SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(glyph, cursorX + value.items[i].lsb, cursorY, value.items[i].size)
+        else
+          SILE.outputter.nsview:drawGlyph_atX_atY_(value.items[i].codepoint, cursorX, cursorY)
         end
         cursorX = cursorX + value.items[i].width
       end
@@ -79,6 +90,7 @@ doGlyphSILE = function(s, v, fs)
   fontsize = fs
 end
 
+
 doSILEDisplay = function(nsview)
   SILE.outputters.Glyphs.nsview = nsview
   if not stringToTypeset then return end
@@ -90,9 +102,9 @@ doSILEDisplay = function(nsview)
   local ff = plain:init()
   SILE.typesetter:init(ff)
   if fontsize > 0 then SILE.settings.set("font.size", fontsize) end
+  SILE.settings.set("font.family", "Glyphs:Master:1")
   SILE.doTexlike(stringToTypeset)
   SILE.typesetter:leaveHmode()
   SILE.typesetter:chuck() -- XXX
-  SILE.typesetter:debugState()
   plain:finish()
 end

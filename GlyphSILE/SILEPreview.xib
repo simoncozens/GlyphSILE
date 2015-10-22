@@ -142,17 +142,17 @@ DQ
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5lA-ym-BbD">
+                    <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lA-ym-BbD">
                         <rect key="frame" x="71" y="3" width="76" height="26"/>
                         <animations/>
-                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="NTd-jZ-PLB" id="wRv-wB-7JT">
+                        <popUpButtonCell key="cell" type="push" title="Instances" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="NTd-jZ-PLB" id="wRv-wB-7JT">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="9cz-DX-jPh">
                                 <items>
-                                    <menuItem title="Item 1" state="on" id="NTd-jZ-PLB"/>
-                                    <menuItem title="Item 2" id="TNG-Jb-chB"/>
-                                    <menuItem title="Item 3" id="ftL-Jz-UxK"/>
+                                    <menuItem title="Instances" state="on" tag="1" enabled="NO" id="NTd-jZ-PLB"/>
+                                    <menuItem isSeparatorItem="YES" id="R29-K3-q7d"/>
+                                    <menuItem title="Masters" tag="2" enabled="NO" id="TNG-Jb-chB"/>
                                 </items>
                             </menu>
                         </popUpButtonCell>

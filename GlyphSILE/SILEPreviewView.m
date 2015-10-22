@@ -14,6 +14,8 @@
 
 @implementation SILEPreviewView
 
+CTFontRef lastFont;
+
 - (void)drawRect:(NSRect)pNSRect {
     lua_State *L = [[NSLua sharedLua] getLuaState];
     lua_getglobal(L, "doSILEDisplay");
@@ -45,4 +47,33 @@
     [OpenGlyphsPath stroke];
 }
 
+- (void)loadFontFromPath:(char*)path withHeight:(CGFloat)height
+{
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithFilename(path);
+    if (!dataProvider) { return; }
+    // Create the font with the data provider, then release the data provider.
+    CGFontRef fontRef = CGFontCreateWithDataProvider(dataProvider);
+    if (!fontRef) {
+        CGDataProviderRelease(dataProvider);
+        return;
+    }
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1.0f, 1.0f));
+    CGContextSetFont(context, fontRef);
+    CGContextSetFontSize(context, height);
+    lastFont = CTFontCreateWithGraphicsFont(fontRef, height, NULL, NULL);
+    CGDataProviderRelease(dataProvider);
+    CGFontRelease(fontRef);
+}
+
+/* Not optimized */
+- (void)drawGlyph:(unsigned int)gid atX:(float)x atY:(float)y
+{
+    assert(lastFont);
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1.0f, 1.0f));
+    CGPoint pos[] = { CGPointMake(x,y) };
+    CGGlyph glyphs[] = { (CGGlyph)gid };
+    CGContextShowGlyphsAtPositions(context, glyphs, pos, 1);
+}
 @end
