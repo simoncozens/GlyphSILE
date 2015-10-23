@@ -181,6 +181,9 @@ DQ
                 <animations/>
             </view>
             <contentBorderThickness minY="33"/>
+            <connections>
+                <outlet property="delegate" destination="-2" id="eef-wD-2HL"/>
+            </connections>
             <point key="canvasLocation" x="212.5" y="304"/>
         </window>
     </objects>

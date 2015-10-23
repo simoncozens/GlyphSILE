@@ -85,8 +85,11 @@ static const struct luaL_Reg printlib [] = {
     [[[mainMenu itemAtIndex:8] submenu] insertItem:i atIndex:index];
 }
 
+- (void)windowDidBecomeKey:(NSNotification *)notification{
+    [self setupBehaviorMenu];
+}
+
 - (void) setupBehaviorMenu {
-    NSLog(@"Setting up behavior menu");
     [_SILEMode setAutoenablesItems:NO];
 
     [_SILEMode removeAllItems];
@@ -181,7 +184,7 @@ static const struct luaL_Reg printlib [] = {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showSILEPreview"]) {
         [_silePreviewWindow orderBack:self];
     }
-
+    [self setupBehaviorMenu];
 }
 
 - (NSUInteger) interfaceVersion {
