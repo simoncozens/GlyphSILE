@@ -10,23 +10,24 @@
 #import "NSLua.h"
 #import "LuaBridgedFunctions.h"
 
+#import <GlyphsCore/GSFont.h>
+#import <GlyphsCore/GSInstance.h>
+#import <GlyphsCore/GSFontMaster.h>
+
 // Horrible private things
 @interface GSApplication : NSApplication
 @property (weak, nonatomic, nullable) GSDocument* currentFontDocument;
 @end
 
-@interface GSDocument : NSDocument
-@property (weak, nonatomic, nullable) GSFont* font;
-@end
-
-@interface GSInstance : GSFont
-@end
-@interface GSFontMaster : GSFont
-@end
-
 // stub definitions, implemented in Glyphs
+
+@end
+
 @interface JSTDocument
 - (void) setKeywords:(NSDictionary *)keyWords;
+@end
+@interface GSDocument
+@property (nonatomic, retain) GSFont* font;
 @end
 
 @protocol WindowsAdditions <NSObject>
@@ -114,10 +115,10 @@ static const struct luaL_Reg printlib [] = {
     [[_SILEMode itemAtIndex:([[_SILEMode itemArray]count]-1)] setEnabled:FALSE];
     for (NSDocument* doc in [[NSApplication sharedApplication] orderedDocuments]) {
         if ([doc isKindOfClass:NSClassFromString(@"GSDocument")]) {
-            GSFont* f = [(GSDocument*)doc font];
+            GSFont* f = (GSFont *)[(GSDocument*)doc font];
             for (GSFontMaster* master in [f fontMasters]) {
                 NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
-                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[master valueForKey:@"name"] action:NULL keyEquivalent:@""];
+                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[master name] action:NULL keyEquivalent:@""];
                 [robj setObject:f forKey:@"font"];
                 [robj setObject:master forKey:@"master"];
                 [i setRepresentedObject:robj];
