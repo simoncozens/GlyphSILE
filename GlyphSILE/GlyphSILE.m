@@ -40,16 +40,16 @@ NSTextView *luaResult;
 
 - (id) init {
     self = [super init];
-	if (self) {
+    if (self) {
         buffer = [NSMutableString stringWithString:@""];
-		// do stuff
-	}
-	return self;
+        // do stuff
+    }
+    return self;
 }
 
 - (void) dealloc {
-	self.incomingCode = nil;
-	self.luaResult = nil;
+    self.incomingCode = nil;
+    self.luaResult = nil;
 }
 
 int lua_my_print(lua_State* L) {
@@ -142,45 +142,45 @@ static const struct luaL_Reg printlib [] = {
     lua_pop(L, 1);
     [[NSLua sharedLua] runLuaBundleFile:@"GlyphsApp.lua"];
     [[NSLua sharedLua] runLuaBundleFile:@"GlyphSILE.lua"];
-	
-	NSArray *blueWords = @[@"and", @"break", @"do", @"else", @"elseif", @"end", @"false", @"for", @"function", @"goto", @"if", @"in", @"local", @"nil", @"not", @"or", @"repeat", @"return", @"then", @"true", @"until", @"while"];
-	NSArray *greenWords = @[@"glyphs", @"components", @"anchors", @"kerning", @"Layer", @"Glyph", @"Node", @"Anchor", @"Component"];
-	NSArray *orangeWords = @[];
+    
+    NSArray *blueWords = @[@"and", @"break", @"do", @"else", @"elseif", @"end", @"false", @"for", @"function", @"goto", @"if", @"in", @"local", @"nil", @"not", @"or", @"repeat", @"return", @"then", @"true", @"until", @"while"];
+    NSArray *greenWords = @[@"glyphs", @"components", @"anchors", @"kerning", @"Layer", @"Glyph", @"Node", @"Anchor", @"Component"];
+    NSArray *orangeWords = @[];
 
-	
-	NSMutableDictionary *keywords = [[NSMutableDictionary alloc] init];
-	//[keywords setObject:[NSColor whiteColor] forKey:GSForegroundColor];
-	NSFont *Font = [NSFont fontWithName:@"Menlo-Italic" size:11];
-	if (Font) {
-		keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor], @"NSFont": Font};
-	}
-	else {
-		keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor]};
-	}
-	
-	Font = [NSFont fontWithName:@"Menlo-Bold" size:11];
-	NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.0f green:0.55f blue:0.8f alpha:1.0f] forKey:NSForegroundColorAttributeName];
-	if (Font) {
-		Attributes[NSFontAttributeName] = Font;
-	}
-	for (NSString *word in blueWords) {
-		keywords[word] = Attributes;
-	}
-	Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.2f green:0.4f blue:0.16f alpha:1.0f] forKey:NSForegroundColorAttributeName];
-	for (NSString *word in greenWords) {
-		keywords[word] = Attributes;
-	}
-	Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.5f green:0.28f blue:0.0f alpha:1.0f] forKey:NSForegroundColorAttributeName];
-	for (NSString *word in orangeWords) {
-		keywords[word] = Attributes;
-	}
-	
-	[(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
-	NSString *Code = [[NSUserDefaults standardUserDefaults] objectForKey:@"LuaConsoleCode"];
-	[_incomingCode setString:Code];
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showLuaConsole"]) {
-		[_consoleWindow orderBack:self];
-	}
+    
+    NSMutableDictionary *keywords = [[NSMutableDictionary alloc] init];
+    //[keywords setObject:[NSColor whiteColor] forKey:GSForegroundColor];
+    NSFont *Font = [NSFont fontWithName:@"Menlo-Italic" size:11];
+    if (Font) {
+        keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor], @"NSFont": Font};
+    }
+    else {
+        keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor]};
+    }
+    
+    Font = [NSFont fontWithName:@"Menlo-Bold" size:11];
+    NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.0f green:0.55f blue:0.8f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+    if (Font) {
+        Attributes[NSFontAttributeName] = Font;
+    }
+    for (NSString *word in blueWords) {
+        keywords[word] = Attributes;
+    }
+    Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.2f green:0.4f blue:0.16f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+    for (NSString *word in greenWords) {
+        keywords[word] = Attributes;
+    }
+    Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.5f green:0.28f blue:0.0f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+    for (NSString *word in orangeWords) {
+        keywords[word] = Attributes;
+    }
+    
+    [(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
+    NSString *Code = [[NSUserDefaults standardUserDefaults] objectForKey:@"LuaConsoleCode"];
+    [_incomingCode setString:Code];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showLuaConsole"]) {
+        [_consoleWindow orderBack:self];
+    }
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showSILEPreview"]) {
         [_silePreviewWindow orderBack:self];
     }
@@ -188,14 +188,14 @@ static const struct luaL_Reg printlib [] = {
 }
 
 - (NSUInteger) interfaceVersion {
-	// Distinguishes the API verison the plugin was built for. Return 1.
-	return 1;
+    // Distinguishes the API verison the plugin was built for. Return 1.
+    return 1;
 }
 
 - (BOOL)windowShouldClose:(id)window {
-	if (_consoleWindow == window) {
-		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
-	}
+    if (_consoleWindow == window) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
+    }
     if (_silePreviewWindow == window) {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showSILEPreview"];
     }
@@ -203,14 +203,14 @@ static const struct luaL_Reg printlib [] = {
 }
 
 - (void) showConsole {
-	if ([(NSWindow <WindowsAdditions>*)_consoleWindow reallyVisible] && [_consoleWindow isKeyWindow]) {
-		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
-		[_consoleWindow orderOut:self];
-	}
-	else {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showLuaConsole"];
-		[_consoleWindow makeKeyAndOrderFront:self];
-	}
+    if ([(NSWindow <WindowsAdditions>*)_consoleWindow reallyVisible] && [_consoleWindow isKeyWindow]) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
+        [_consoleWindow orderOut:self];
+    }
+    else {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showLuaConsole"];
+        [_consoleWindow makeKeyAndOrderFront:self];
+    }
 }
 
 - (void) showSILEPreview {
@@ -231,17 +231,17 @@ static const struct luaL_Reg printlib [] = {
 }
 
 - (IBAction)compileConsoleCode:(id)sender {
-	NSString *Code = [_incomingCode string];
-	NSLog(@"Lua: %@", Code);
+    NSString *Code = [_incomingCode string];
+    NSLog(@"Lua: %@", Code);
     @try {
-		
+        
         [[NSLua sharedLua] runLuaString:Code];
         NSString *errorBuffer = [[NSLua sharedLua] getErrorBuffer];
         if (errorBuffer && errorBuffer.length > 0) {
             [buffer appendString:errorBuffer];
         }
         [_luaResult setString:buffer];
-		[[NSUserDefaults standardUserDefaults] setObject:Code forKey:@"LuaConsoleCode"];
+        [[NSUserDefaults standardUserDefaults] setObject:Code forKey:@"LuaConsoleCode"];
     }
     @catch (NSException* e) {
         NSLog(@"Lua failed: %@", e.reason);
