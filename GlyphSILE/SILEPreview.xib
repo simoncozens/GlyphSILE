@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="GlyphSILE">
             <connections>
                 <outlet property="SILEInput" destination="b40-Ay-Oxq" id="CKC-yO-E9P"/>
+                <outlet property="SILEMode" destination="5lA-ym-BbD" id="ReE-3X-gpI"/>
                 <outlet property="SILEOutput" destination="eoY-hM-guE" id="8bb-2w-trL"/>
                 <outlet property="fontSizeSelection" destination="F3Y-HN-A7h" id="W7Z-5J-Id3"/>
                 <outlet property="silePreviewWindow" destination="Jt6-M0-0LC" id="TFw-f3-TRj"/>
@@ -23,7 +24,7 @@
             <value key="minSize" type="size" width="489" height="241"/>
             <view key="contentView" id="4YX-wT-RuF">
                 <rect key="frame" x="0.0" y="-1" width="489" height="358"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <splitView dividerStyle="paneSplitter" translatesAutoresizingMaskIntoConstraints="NO" id="w9Z-fw-vQe">
                         <rect key="frame" x="0.0" y="32" width="489" height="326"/>
@@ -151,8 +152,8 @@ DQ
                             <menu key="menu" id="9cz-DX-jPh">
                                 <items>
                                     <menuItem title="Instances" state="on" tag="1" enabled="NO" id="NTd-jZ-PLB"/>
-                                    <menuItem isSeparatorItem="YES" id="R29-K3-q7d"/>
-                                    <menuItem title="Masters" tag="2" enabled="NO" id="TNG-Jb-chB"/>
+                                    <menuItem isSeparatorItem="YES" tag="1" id="R29-K3-q7d"/>
+                                    <menuItem title="Masters" tag="1" enabled="NO" id="TNG-Jb-chB"/>
                                 </items>
                             </menu>
                         </popUpButtonCell>

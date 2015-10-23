@@ -16,16 +16,16 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
     if not options.font:match("^Glyphs:") then -- abuse
       return SILE.shapers.harfbuzz:shapeToken(text, orig)
     end
-    local font = Glyphs.font
+    local font = self.gsfont
     options.filename = font.tempOTFFont
     local scale = options.size / font.upm -- design size?
-    local master = font.masters[1] -- XXX
     local items = SILE.shapers.harfbuzz:shapeToken(text, options)
-
+    local masterid = options.font:gsub("Glyphs:Master:","")
+    local master = font.masters[masterid]
     for i =1,#items do
       local g = font.glyphs[items[i].name]
       if g then
-        local layer = g.layers[master.id]
+        local layer = g.layers[masterid]
         if layer then
           items[i].width = layer.width * scale
           items[i].glyphAdvance = layer.width  * scale
@@ -81,15 +81,27 @@ SILE.outputters.Glyphs = {
 
 SILE.shaper = SILE.shapers.Glyphs
 SILE.outputter = SILE.outputters.Glyphs
+SU.error = function (message,bug)
+  if(SILE.currentCommand and type(SILE.currentCommand) == "table") then
+    print("\n! "..message.. " at "..SILE.currentlyProcessingFile.." l."..(SILE.currentCommand.line)..", col."..(SILE.currentCommand.col))
+  else
+    print("\n! "..message.. " at "..SILE.currentlyProcessingFile)
+  end
+  if bug then print(debug.traceback()) end
+  SILE.outputter:finish()
+  -- Don't call os.exit, it's confusing...
+end
 
 local stringToTypeset
 local fontsize
-doGlyphSILE = function(s, v, fs)
+-- local mode
+
+doGlyphSILE = function(s, v, fs, m)
   stringToTypeset = s
+  mode = m
   SILE.outputters.Glyphs.nsview:setNeedsDisplay_(true)
   fontsize = fs
 end
-
 
 doSILEDisplay = function(nsview)
   SILE.outputters.Glyphs.nsview = nsview
@@ -102,7 +114,13 @@ doSILEDisplay = function(nsview)
   local ff = plain:init()
   SILE.typesetter:init(ff)
   if fontsize > 0 then SILE.settings.set("font.size", fontsize) end
-  SILE.settings.set("font.family", "Glyphs:Master:1")
+  if mode and mode.filename then
+    SILE.settings.set("font.filename", mode.filename)
+  else
+    SILE.settings.set("font.family", mode.family)
+    SILE.shapers.Glyphs.gsfont = mode.font
+    SILE.settings.set("font.filename", "")
+  end
   SILE.doTexlike(stringToTypeset)
   SILE.typesetter:leaveHmode()
   SILE.typesetter:chuck() -- XXX
