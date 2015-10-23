@@ -21,7 +21,7 @@ CTFontRef lastFont;
     lua_getglobal(L, "doSILEDisplay");
     to_lua(L, self, 1);
     if (lua_pcall(L, 1, 0, 0) != 0)
-        NSLog(@"error running function `f': %s", lua_tostring(L, -1));
+        NSLog(@"Preview error running function `f': %s", lua_tostring(L, -1));
 }
 
 - (void)drawGSLayer:(GSLayer *)l atX:(float)x atY:(float)y withSize:(float)s {

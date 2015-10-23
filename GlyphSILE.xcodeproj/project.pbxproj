@@ -17,9 +17,9 @@
 		F43BEED61BC55C5E005BFC39 /* languages in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED11BC55C5E005BFC39 /* languages */; };
 		F43BEED71BC55C5E005BFC39 /* lua-libraries in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED21BC55C5E005BFC39 /* lua-libraries */; };
 		F43BEED81BC55C5E005BFC39 /* packages in Resources */ = {isa = PBXBuildFile; fileRef = F43BEED31BC55C5E005BFC39 /* packages */; };
-		F43BEEDC1BC651CD005BFC39 /* shared-libraries in Resources */ = {isa = PBXBuildFile; fileRef = F43BEEDB1BC651CD005BFC39 /* shared-libraries */; settings = {ASSET_TAGS = (); }; };
-		F441103A1BC3F75500E38A84 /* SILEPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44110391BC3F75500E38A84 /* SILEPreview.xib */; settings = {ASSET_TAGS = (); }; };
-		F45D97F11BCA88FD008DCF76 /* SILEPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D97F01BCA88FD008DCF76 /* SILEPreviewView.m */; settings = {ASSET_TAGS = (); }; };
+		F43BEEDC1BC651CD005BFC39 /* shared-libraries in Resources */ = {isa = PBXBuildFile; fileRef = F43BEEDB1BC651CD005BFC39 /* shared-libraries */; };
+		F441103A1BC3F75500E38A84 /* SILEPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44110391BC3F75500E38A84 /* SILEPreview.xib */; };
+		F45D97F11BCA88FD008DCF76 /* SILEPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D97F01BCA88FD008DCF76 /* SILEPreviewView.m */; };
 		F47783801BB5FCB800B55550 /* LuaConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = F477837F1BB5FCB800B55550 /* LuaConsole.xib */; };
 		F47783821BB7FC9900B55550 /* GlyphsApp.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47783811BB7FC9900B55550 /* GlyphsApp.lua */; };
 		F47CE55E1BC15889009C76C1 /* contents.html in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5161BC15889009C76C1 /* contents.html */; };
@@ -71,7 +71,7 @@
 		F47CE59A1BC158A7009C76C1 /* LuaBridge.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5911BC158A7009C76C1 /* LuaBridge.lua */; };
 		F47CE59B1BC158A7009C76C1 /* LuaBridgedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5931BC158A7009C76C1 /* LuaBridgedFunctions.m */; };
 		F47CE59C1BC158A7009C76C1 /* NSLua.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5951BC158A7009C76C1 /* NSLua.m */; };
-		F4BDCF8D1BC540E70013A9EF /* GlyphSILE.lua in Resources */ = {isa = PBXBuildFile; fileRef = F4BDCF8C1BC540E70013A9EF /* GlyphSILE.lua */; settings = {ASSET_TAGS = (); }; };
+		F4BDCF8D1BC540E70013A9EF /* GlyphSILE.lua in Resources */ = {isa = PBXBuildFile; fileRef = F4BDCF8C1BC540E70013A9EF /* GlyphSILE.lua */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -577,6 +577,7 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "~/Library/Application Support/Glyphs/Plugins";
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
+				GCC_PREFIX_HEADER = "GlyphSILE/GlyphSILE-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -599,6 +600,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
+				GCC_PREFIX_HEADER = "GlyphSILE/GlyphSILE-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = LUA_USE_MACOSX;
 				INFOPLIST_FILE = GlyphSILE/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
