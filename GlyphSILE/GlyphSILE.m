@@ -21,6 +21,18 @@
 
 // stub definitions, implemented in Glyphs
 
+@interface GSExportInstanceOperation : NSOperation {
+}
+@property (nonatomic, readonly) NSString* finalFontFile;
+@property (nonatomic, strong) NSURL* installFontURL;
+@property (weak, nonatomic) id delegate;
+@property (nonatomic, retain) NSString* tempPath;
+@property (nonatomic) BOOL autohint;
+@property (nonatomic) BOOL removeOverlap;
+@property (nonatomic) BOOL useSubroutines;
+@property (nonatomic) BOOL useProductionNames;
+
+- (instancetype)initWithFont:(GSFont*)Font instance:(GSInstance*)Instance format:(int)Format;
 @end
 
 @interface JSTDocument
@@ -248,6 +260,27 @@ static const struct luaL_Reg printlib [] = {
         NSLog(@"Lua failed: %@", e.reason);
     }
 }
+
+- (NSString *)_exportInstance:(GSInstance *)instance {
+    int Format = 0;
+    GSFont *Font = instance.font;
+    GSExportInstanceOperation *Exporter = [[NSClassFromString(@"GSExportInstanceOperation") alloc] initWithFont:Font instance:instance format:Format];
+    
+    Exporter.installFontURL = [NSURL fileURLWithPath:[@"~/Library/Application Support/Glyphs/Temp/" stringByExpandingTildeInPath]];
+    // the following parameters can be set here or directly read from the instance.
+    Exporter.autohint = NO;
+    Exporter.removeOverlap = NO;
+    Exporter.useSubroutines = NO;
+    Exporter.useProductionNames = NO;
+
+    Exporter.tempPath = [@"~/Library/Application Support/Glyphs/Temp/" stringByExpandingTildeInPath]; // this has to be set correctly.
+
+    //Delegate = [[ExporterDelegate.alloc] init]; // the collectResults method of this object will be called on case the exporter has to report a problem.
+    //Exporter.delegate = Delegate;
+    [Exporter main];
+    return [Exporter finalFontFile];
+}
+
 - (IBAction)drawSILEPreview:(id)sender {
     NSString *code = [_SILEInput string];
     SILEPreviewView *view = _SILEOutput;
@@ -256,15 +289,18 @@ static const struct luaL_Reg printlib [] = {
 
     NSMutableDictionary* d = [mode representedObject];
     NSError *Error = nil;
-
     GSFont *f = [d objectForKey:@"font"];
+    UKLog(@"f: %@", f);
     if ([d objectForKey:@"instance"]) {
         GSInstance *i = [d objectForKey:@"instance"];
-        GSFont *f2 = [f generateInstance:i error:&Error];
-        [f2 compileTempFontError:&Error];
-        NSString *filename = [f2 tempOTFFont];
-        [d setValue:filename forKey:@"filename"];
-        /* XXX Need to export full font here */
+
+        NSString *filename = [self _exportInstance:i];
+        if (filename) {
+            d[@"filename"] = filename;
+        } else {
+            NSLog(@"Error exporting instance");
+            return;
+        }
     } else if ([d objectForKey:@"master"]) {
         [f compileTempFontError:&Error];
         NSString *family = [NSString stringWithFormat: @"Glyphs:Master:%@", [[d objectForKey:@"master"] valueForKey:@"id"]];
@@ -275,9 +311,10 @@ static const struct luaL_Reg printlib [] = {
     lua_pushstring(L, [code UTF8String]);
     to_lua(L, view, true);
     lua_pushinteger(L, [_fontSizeSelection integerValue]);
+    UKLog(@"d: %@", d);
     to_lua(L, d, true);
     if (lua_pcall(L, 4, 1, 0) != 0)
-        NSLog(@"error running function `f': %s", lua_tostring(L, -1));
+        NSLog(@"GlyphsSILE error running function `f': %s", lua_tostring(L, -1));
 }
 
 @end
