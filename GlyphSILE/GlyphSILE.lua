@@ -33,7 +33,7 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
           items[i].depth = -master.descender * scale
           items[i].lsb = layer.LSB * scale
           items[i].layer = layer
-          items[i].size = options.size -- XXX
+          items[i].size = scale
         end
       end
     end

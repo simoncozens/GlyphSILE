@@ -27,7 +27,7 @@ CTFontRef lastFont;
 - (void)drawGSLayer:(GSLayer *)l atX:(float)x atY:(float)y withSize:(float)s {
     NSAffineTransform *transform = [NSAffineTransform transform];
     [transform translateXBy:x yBy:y];
-    [transform scaleBy: s/1000.0];
+    [transform scaleBy: s];
     NSBezierPath *GlyphBezierPath = [[l bezierPath] copy];
     if (!GlyphBezierPath) {
         GlyphBezierPath = [[NSBezierPath alloc] init];
