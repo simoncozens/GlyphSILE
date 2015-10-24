@@ -10,23 +10,36 @@
 #import "NSLua.h"
 #import "LuaBridgedFunctions.h"
 
+#import <GlyphsCore/GSFont.h>
+#import <GlyphsCore/GSInstance.h>
+#import <GlyphsCore/GSFontMaster.h>
+
 // Horrible private things
 @interface GSApplication : NSApplication
 @property (weak, nonatomic, nullable) GSDocument* currentFontDocument;
 @end
 
-@interface GSDocument : NSDocument
-@property (weak, nonatomic, nullable) GSFont* font;
-@end
-
-@interface GSInstance : GSFont
-@end
-@interface GSFontMaster : GSFont
-@end
-
 // stub definitions, implemented in Glyphs
+
+@interface GSExportInstanceOperation : NSOperation {
+}
+@property (nonatomic, readonly) NSString* finalFontFile;
+@property (nonatomic, strong) NSURL* installFontURL;
+@property (weak, nonatomic) id delegate;
+@property (nonatomic, retain) NSString* tempPath;
+@property (nonatomic) BOOL autohint;
+@property (nonatomic) BOOL removeOverlap;
+@property (nonatomic) BOOL useSubroutines;
+@property (nonatomic) BOOL useProductionNames;
+
+- (instancetype)initWithFont:(GSFont*)Font instance:(GSInstance*)Instance format:(int)Format;
+@end
+
 @interface JSTDocument
 - (void) setKeywords:(NSDictionary *)keyWords;
+@end
+@interface GSDocument
+@property (nonatomic, retain) GSFont* font;
 @end
 
 @protocol WindowsAdditions <NSObject>
@@ -40,16 +53,16 @@ NSTextView *luaResult;
 
 - (id) init {
     self = [super init];
-	if (self) {
+    if (self) {
         buffer = [NSMutableString stringWithString:@""];
-		// do stuff
-	}
-	return self;
+        // do stuff
+    }
+    return self;
 }
 
 - (void) dealloc {
-	self.incomingCode = nil;
-	self.luaResult = nil;
+    self.incomingCode = nil;
+    self.luaResult = nil;
 }
 
 int lua_my_print(lua_State* L) {
@@ -114,10 +127,10 @@ static const struct luaL_Reg printlib [] = {
     [[_SILEMode itemAtIndex:([[_SILEMode itemArray]count]-1)] setEnabled:FALSE];
     for (NSDocument* doc in [[NSApplication sharedApplication] orderedDocuments]) {
         if ([doc isKindOfClass:NSClassFromString(@"GSDocument")]) {
-            GSFont* f = [(GSDocument*)doc font];
+            GSFont* f = (GSFont *)[(GSDocument*)doc font];
             for (GSFontMaster* master in [f fontMasters]) {
                 NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
-                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[master valueForKey:@"name"] action:NULL keyEquivalent:@""];
+                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[master name] action:NULL keyEquivalent:@""];
                 [robj setObject:f forKey:@"font"];
                 [robj setObject:master forKey:@"master"];
                 [i setRepresentedObject:robj];
@@ -142,45 +155,45 @@ static const struct luaL_Reg printlib [] = {
     lua_pop(L, 1);
     [[NSLua sharedLua] runLuaBundleFile:@"GlyphsApp.lua"];
     [[NSLua sharedLua] runLuaBundleFile:@"GlyphSILE.lua"];
-	
-	NSArray *blueWords = @[@"and", @"break", @"do", @"else", @"elseif", @"end", @"false", @"for", @"function", @"goto", @"if", @"in", @"local", @"nil", @"not", @"or", @"repeat", @"return", @"then", @"true", @"until", @"while"];
-	NSArray *greenWords = @[@"glyphs", @"components", @"anchors", @"kerning", @"Layer", @"Glyph", @"Node", @"Anchor", @"Component"];
-	NSArray *orangeWords = @[];
+    
+    NSArray *blueWords = @[@"and", @"break", @"do", @"else", @"elseif", @"end", @"false", @"for", @"function", @"goto", @"if", @"in", @"local", @"nil", @"not", @"or", @"repeat", @"return", @"then", @"true", @"until", @"while"];
+    NSArray *greenWords = @[@"glyphs", @"components", @"anchors", @"kerning", @"Layer", @"Glyph", @"Node", @"Anchor", @"Component"];
+    NSArray *orangeWords = @[];
 
-	
-	NSMutableDictionary *keywords = [[NSMutableDictionary alloc] init];
-	//[keywords setObject:[NSColor whiteColor] forKey:GSForegroundColor];
-	NSFont *Font = [NSFont fontWithName:@"Menlo-Italic" size:11];
-	if (Font) {
-		keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor], @"NSFont": Font};
-	}
-	else {
-		keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor]};
-	}
-	
-	Font = [NSFont fontWithName:@"Menlo-Bold" size:11];
-	NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.0f green:0.55f blue:0.8f alpha:1.0f] forKey:NSForegroundColorAttributeName];
-	if (Font) {
-		Attributes[NSFontAttributeName] = Font;
-	}
-	for (NSString *word in blueWords) {
-		keywords[word] = Attributes;
-	}
-	Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.2f green:0.4f blue:0.16f alpha:1.0f] forKey:NSForegroundColorAttributeName];
-	for (NSString *word in greenWords) {
-		keywords[word] = Attributes;
-	}
-	Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.5f green:0.28f blue:0.0f alpha:1.0f] forKey:NSForegroundColorAttributeName];
-	for (NSString *word in orangeWords) {
-		keywords[word] = Attributes;
-	}
-	
-	[(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
-	NSString *Code = [[NSUserDefaults standardUserDefaults] objectForKey:@"LuaConsoleCode"];
-	[_incomingCode setString:Code];
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showLuaConsole"]) {
-		[_consoleWindow orderBack:self];
-	}
+    
+    NSMutableDictionary *keywords = [[NSMutableDictionary alloc] init];
+    //[keywords setObject:[NSColor whiteColor] forKey:GSForegroundColor];
+    NSFont *Font = [NSFont fontWithName:@"Menlo-Italic" size:11];
+    if (Font) {
+        keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor], @"NSFont": Font};
+    }
+    else {
+        keywords[@"GSCommmentAttributes"] = @{@"NSColor": [NSColor darkGrayColor]};
+    }
+    
+    Font = [NSFont fontWithName:@"Menlo-Bold" size:11];
+    NSMutableDictionary *Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.0f green:0.55f blue:0.8f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+    if (Font) {
+        Attributes[NSFontAttributeName] = Font;
+    }
+    for (NSString *word in blueWords) {
+        keywords[word] = Attributes;
+    }
+    Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.2f green:0.4f blue:0.16f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+    for (NSString *word in greenWords) {
+        keywords[word] = Attributes;
+    }
+    Attributes = [NSMutableDictionary dictionaryWithObject:[NSColor colorWithCalibratedRed:0.5f green:0.28f blue:0.0f alpha:1.0f] forKey:NSForegroundColorAttributeName];
+    for (NSString *word in orangeWords) {
+        keywords[word] = Attributes;
+    }
+    
+    [(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
+    NSString *Code = [[NSUserDefaults standardUserDefaults] objectForKey:@"LuaConsoleCode"];
+    [_incomingCode setString:Code];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showLuaConsole"]) {
+        [_consoleWindow orderBack:self];
+    }
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showSILEPreview"]) {
         [_silePreviewWindow orderBack:self];
     }
@@ -188,14 +201,14 @@ static const struct luaL_Reg printlib [] = {
 }
 
 - (NSUInteger) interfaceVersion {
-	// Distinguishes the API verison the plugin was built for. Return 1.
-	return 1;
+    // Distinguishes the API verison the plugin was built for. Return 1.
+    return 1;
 }
 
 - (BOOL)windowShouldClose:(id)window {
-	if (_consoleWindow == window) {
-		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
-	}
+    if (_consoleWindow == window) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
+    }
     if (_silePreviewWindow == window) {
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showSILEPreview"];
     }
@@ -203,14 +216,14 @@ static const struct luaL_Reg printlib [] = {
 }
 
 - (void) showConsole {
-	if ([(NSWindow <WindowsAdditions>*)_consoleWindow reallyVisible] && [_consoleWindow isKeyWindow]) {
-		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
-		[_consoleWindow orderOut:self];
-	}
-	else {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showLuaConsole"];
-		[_consoleWindow makeKeyAndOrderFront:self];
-	}
+    if ([(NSWindow <WindowsAdditions>*)_consoleWindow reallyVisible] && [_consoleWindow isKeyWindow]) {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showLuaConsole"];
+        [_consoleWindow orderOut:self];
+    }
+    else {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showLuaConsole"];
+        [_consoleWindow makeKeyAndOrderFront:self];
+    }
 }
 
 - (void) showSILEPreview {
@@ -231,22 +244,43 @@ static const struct luaL_Reg printlib [] = {
 }
 
 - (IBAction)compileConsoleCode:(id)sender {
-	NSString *Code = [_incomingCode string];
-	NSLog(@"Lua: %@", Code);
+    NSString *Code = [_incomingCode string];
+    NSLog(@"Lua: %@", Code);
     @try {
-		
+        
         [[NSLua sharedLua] runLuaString:Code];
         NSString *errorBuffer = [[NSLua sharedLua] getErrorBuffer];
         if (errorBuffer && errorBuffer.length > 0) {
             [buffer appendString:errorBuffer];
         }
         [_luaResult setString:buffer];
-		[[NSUserDefaults standardUserDefaults] setObject:Code forKey:@"LuaConsoleCode"];
+        [[NSUserDefaults standardUserDefaults] setObject:Code forKey:@"LuaConsoleCode"];
     }
     @catch (NSException* e) {
         NSLog(@"Lua failed: %@", e.reason);
     }
 }
+
+- (NSString *)_exportInstance:(GSInstance *)instance {
+    int Format = 0;
+    GSFont *Font = instance.font;
+    GSExportInstanceOperation *Exporter = [[NSClassFromString(@"GSExportInstanceOperation") alloc] initWithFont:Font instance:instance format:Format];
+    
+    Exporter.installFontURL = [NSURL fileURLWithPath:[@"~/Library/Application Support/Glyphs/Temp/" stringByExpandingTildeInPath]];
+    // the following parameters can be set here or directly read from the instance.
+    Exporter.autohint = NO;
+    Exporter.removeOverlap = NO;
+    Exporter.useSubroutines = NO;
+    Exporter.useProductionNames = NO;
+
+    Exporter.tempPath = [@"~/Library/Application Support/Glyphs/Temp/" stringByExpandingTildeInPath]; // this has to be set correctly.
+
+    //Delegate = [[ExporterDelegate.alloc] init]; // the collectResults method of this object will be called on case the exporter has to report a problem.
+    //Exporter.delegate = Delegate;
+    [Exporter main];
+    return [Exporter finalFontFile];
+}
+
 - (IBAction)drawSILEPreview:(id)sender {
     NSString *code = [_SILEInput string];
     SILEPreviewView *view = _SILEOutput;
@@ -255,15 +289,18 @@ static const struct luaL_Reg printlib [] = {
 
     NSMutableDictionary* d = [mode representedObject];
     NSError *Error = nil;
-
     GSFont *f = [d objectForKey:@"font"];
+    UKLog(@"f: %@", f);
     if ([d objectForKey:@"instance"]) {
         GSInstance *i = [d objectForKey:@"instance"];
-        GSFont *f2 = [f generateInstance:i error:&Error];
-        [f2 compileTempFontError:&Error];
-        NSString *filename = [f2 tempOTFFont];
-        [d setValue:filename forKey:@"filename"];
-        /* XXX Need to export full font here */
+
+        NSString *filename = [self _exportInstance:i];
+        if (filename) {
+            d[@"filename"] = filename;
+        } else {
+            NSLog(@"Error exporting instance");
+            return;
+        }
     } else if ([d objectForKey:@"master"]) {
         [f compileTempFontError:&Error];
         NSString *family = [NSString stringWithFormat: @"Glyphs:Master:%@", [[d objectForKey:@"master"] valueForKey:@"id"]];
@@ -274,9 +311,10 @@ static const struct luaL_Reg printlib [] = {
     lua_pushstring(L, [code UTF8String]);
     to_lua(L, view, true);
     lua_pushinteger(L, [_fontSizeSelection integerValue]);
+    UKLog(@"d: %@", d);
     to_lua(L, d, true);
     if (lua_pcall(L, 4, 1, 0) != 0)
-        NSLog(@"error running function `f': %s", lua_tostring(L, -1));
+        NSLog(@"GlyphsSILE error running function `f': %s", lua_tostring(L, -1));
 }
 
 @end
