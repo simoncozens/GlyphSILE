@@ -114,7 +114,7 @@ static const struct luaL_Reg printlib [] = {
             GSFont* f = [(GSDocument*)doc font];
             for (GSInstance* ins in [f instances]) {
                 NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
-                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[ins valueForKey:@"name"] action:NULL keyEquivalent:@""];
+                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f valueForKey:@"familyName"], [ins valueForKey:@"name"]] action:NULL keyEquivalent:@""];
                 [robj setObject:f forKey:@"font"];
                 [robj setObject:ins forKey:@"instance"];
                 [i setRepresentedObject:robj];
@@ -130,7 +130,7 @@ static const struct luaL_Reg printlib [] = {
             GSFont* f = (GSFont *)[(GSDocument*)doc font];
             for (GSFontMaster* master in [f fontMasters]) {
                 NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
-                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[master name] action:NULL keyEquivalent:@""];
+                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f valueForKey:@"familyName"], [master name]] action:NULL keyEquivalent:@""];
                 [robj setObject:f forKey:@"font"];
                 [robj setObject:master forKey:@"master"];
                 [i setRepresentedObject:robj];
