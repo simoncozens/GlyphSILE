@@ -616,6 +616,7 @@
 				);
 				INFOPLIST_FILE = GlyphSILE/Info.plist;
 				INSTALL_PATH = /;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Libraries";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lua/src",
@@ -635,6 +636,7 @@
 				GCC_PREFIX_HEADER = "GlyphSILE/GlyphSILE-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = LUA_USE_MACOSX;
 				INFOPLIST_FILE = GlyphSILE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Libraries";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lua/src",
