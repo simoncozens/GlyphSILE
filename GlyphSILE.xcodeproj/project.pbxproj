@@ -71,8 +71,29 @@
 		F47CE59A1BC158A7009C76C1 /* LuaBridge.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5911BC158A7009C76C1 /* LuaBridge.lua */; };
 		F47CE59B1BC158A7009C76C1 /* LuaBridgedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5931BC158A7009C76C1 /* LuaBridgedFunctions.m */; };
 		F47CE59C1BC158A7009C76C1 /* NSLua.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5951BC158A7009C76C1 /* NSLua.m */; };
+		F4B853BE1BDBC6A4000B26CF /* libfontconfig.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */; };
+		F4B853BF1BDBC6A4000B26CF /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */; };
+		F4B853C01BDBC6A4000B26CF /* libharfbuzz.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */; };
+		F4B853C21BDBC6C5000B26CF /* libfontconfig.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B853C31BDBC6C8000B26CF /* libfreetype.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B853C41BDBC6CA000B26CF /* libharfbuzz.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F4BDCF8D1BC540E70013A9EF /* GlyphSILE.lua in Resources */ = {isa = PBXBuildFile; fileRef = F4BDCF8C1BC540E70013A9EF /* GlyphSILE.lua */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F4B853C11BDBC6B0000B26CF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F4B853C21BDBC6C5000B26CF /* libfontconfig.1.dylib in CopyFiles */,
+				F4B853C31BDBC6C8000B26CF /* libfreetype.6.dylib in CopyFiles */,
+				F4B853C41BDBC6CA000B26CF /* libharfbuzz.0.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F429008E1BB513B70047C6CF /* GlyphSILE.glyphsPlugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlyphSILE.glyphsPlugin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +196,9 @@
 		F47CE5941BC158A7009C76C1 /* NSLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLua.h; sourceTree = "<group>"; };
 		F47CE5951BC158A7009C76C1 /* NSLua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLua.m; sourceTree = "<group>"; };
 		F47CE5961BC158A7009C76C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfontconfig.1.dylib; path = frameworks/libfontconfig.1.dylib; sourceTree = "<group>"; };
+		F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = frameworks/libfreetype.6.dylib; sourceTree = "<group>"; };
+		F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libharfbuzz.0.dylib; path = frameworks/libharfbuzz.0.dylib; sourceTree = "<group>"; };
 		F4BDCF8C1BC540E70013A9EF /* GlyphSILE.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GlyphSILE.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,8 +207,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B853BF1BDBC6A4000B26CF /* libfreetype.6.dylib in Frameworks */,
 				F429009D1BB513B70047C6CF /* GlyphsCore.framework in Frameworks */,
 				F42900921BB513B70047C6CF /* Cocoa.framework in Frameworks */,
+				F4B853BE1BDBC6A4000B26CF /* libfontconfig.1.dylib in Frameworks */,
+				F4B853C01BDBC6A4000B26CF /* libharfbuzz.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +221,9 @@
 		F42900851BB513B70047C6CF = {
 			isa = PBXGroup;
 			children = (
+				F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */,
+				F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */,
+				F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */,
 				F43BEEDB1BC651CD005BFC39 /* shared-libraries */,
 				F43BEECF1BC55C5E005BFC39 /* classes */,
 				F43BEED01BC55C5E005BFC39 /* core */,
@@ -372,6 +402,7 @@
 				F429008A1BB513B70047C6CF /* Sources */,
 				F429008B1BB513B70047C6CF /* Frameworks */,
 				F429008C1BB513B70047C6CF /* Resources */,
+				F4B853C11BDBC6B0000B26CF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -588,6 +619,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lua/src",
+					"$(PROJECT_DIR)/frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.simon-cozens.GlyphSILE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -606,6 +638,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lua/src",
+					"$(PROJECT_DIR)/frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.simon-cozens.GlyphSILE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
