@@ -100,6 +100,7 @@ static const struct luaL_Reg printlib [] = {
 
 - (void)windowDidBecomeKey:(NSNotification *)notification{
     [self setupBehaviorMenu];
+    [self drawSILEPreview:self];
 }
 
 - (void) setupBehaviorMenu {
