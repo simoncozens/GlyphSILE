@@ -17,6 +17,8 @@
 CTFontRef lastFont;
 
 - (void)drawRect:(NSRect)pNSRect {
+	[[NSColor whiteColor] set];
+	NSRectFill(pNSRect);
     lua_State *L = [[NSLua sharedLua] getLuaState];
     lua_getglobal(L, "doSILEDisplay");
     to_lua(L, self, 1);
