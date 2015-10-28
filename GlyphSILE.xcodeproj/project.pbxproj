@@ -78,6 +78,7 @@
 		F4B853C31BDBC6C8000B26CF /* libfreetype.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F4B853C41BDBC6CA000B26CF /* libharfbuzz.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F4BDCF8D1BC540E70013A9EF /* GlyphSILE.lua in Resources */ = {isa = PBXBuildFile; fileRef = F4BDCF8C1BC540E70013A9EF /* GlyphSILE.lua */; };
+		F4E89FBE1BE0CDF000E9D5CA /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E89FBD1BE0CDF000E9D5CA /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -200,6 +201,7 @@
 		F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = frameworks/libfreetype.6.dylib; sourceTree = "<group>"; };
 		F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libharfbuzz.0.dylib; path = frameworks/libharfbuzz.0.dylib; sourceTree = "<group>"; };
 		F4BDCF8C1BC540E70013A9EF /* GlyphSILE.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GlyphSILE.lua; sourceTree = "<group>"; };
+		F4E89FBD1BE0CDF000E9D5CA /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E89FBE1BE0CDF000E9D5CA /* CoreFoundation.framework in Frameworks */,
 				F4B853BF1BDBC6A4000B26CF /* libfreetype.6.dylib in Frameworks */,
 				F429009D1BB513B70047C6CF /* GlyphsCore.framework in Frameworks */,
 				F42900921BB513B70047C6CF /* Cocoa.framework in Frameworks */,
@@ -250,6 +253,7 @@
 		F42900901BB513B70047C6CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4E89FBD1BE0CDF000E9D5CA /* CoreFoundation.framework */,
 				F42900911BB513B70047C6CF /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -563,6 +567,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 			};
@@ -597,6 +602,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 			};
 			name = Release;
