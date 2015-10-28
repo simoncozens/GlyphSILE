@@ -20,5 +20,22 @@
 	<string>GlyphSILE</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>sile</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.simon-cozens.siledocument</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>GlyphSILEDocument</string>
+		</dict>
+	</array>
 </dict>
 </plist>
