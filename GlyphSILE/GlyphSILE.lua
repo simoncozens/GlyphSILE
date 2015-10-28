@@ -23,6 +23,7 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
     local masterid = options.font:gsub("Glyphs:Master:","")
     local master = font.masters[masterid]
     for i =1,#items do
+      print(tostring(items[i]))
       local g = font.glyphs[items[i].name]
       if g then
         local layer = g.layers[masterid]
@@ -113,6 +114,7 @@ doSILEDisplay = function(nsview)
   SILE.documentState.documentClass = plain;
   local ff = plain:init()
   SILE.typesetter:init(ff)
+  SILE.call("nofolios")
   if fontsize > 0 then SILE.settings.set("font.size", fontsize) end
   if mode and mode.filename then
     SILE.settings.set("font.filename", mode.filename)

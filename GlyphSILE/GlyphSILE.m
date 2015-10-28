@@ -100,9 +100,11 @@ static const struct luaL_Reg printlib [] = {
 
 - (void)windowDidBecomeKey:(NSNotification *)notification{
     [self setupBehaviorMenu];
+    [self drawSILEPreview:self];
 }
 
 - (void) setupBehaviorMenu {
+    NSInteger sel = [_SILEMode indexOfSelectedItem];
     [_SILEMode setAutoenablesItems:NO];
 
     [_SILEMode removeAllItems];
@@ -139,6 +141,7 @@ static const struct luaL_Reg printlib [] = {
 
         }
     }
+    [_SILEMode selectItemAtIndex:sel];
 }
 
 - (void) loadPlugin {
