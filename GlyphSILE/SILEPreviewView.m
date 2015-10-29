@@ -20,11 +20,16 @@ CTFontRef lastFont;
 	[[NSColor whiteColor] set];
 	NSRectFill(pNSRect);
     [[NSColor blackColor] set];
+    if ([self inLiveResize]) return; /* Don't try to be too clever */
     lua_State *L = [[NSLua sharedLua] getLuaState];
     lua_getglobal(L, "doSILEDisplay");
     to_lua(L, self, 1);
     if (lua_pcall(L, 1, 0, 0) != 0)
         NSLog(@"Preview error running function `f': %s", lua_tostring(L, -1));
+}
+
+- (void)viewDidEndLiveResize {
+    [self setNeedsDisplay:TRUE];
 }
 
 - (void)drawGSLayer:(GSLayer *)l atX:(float)x atY:(float)y withSize:(float)s {
