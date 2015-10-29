@@ -169,7 +169,7 @@ static const struct luaL_Reg printlib [] = {
 }
 
 - (void) showSILEPreview {
-	NSDocument *newDoc = [[NSDocumentController sharedDocumentController] makeUntitledDocumentOfType:@"org.simon-cozens.sileDocument" error:nil];
+	NSDocument *newDoc = [[NSDocumentController sharedDocumentController] makeUntitledDocumentOfType:@"org.simon-cozens.siledocument" error:nil];
 	[NSDocumentController.sharedDocumentController addDocument:newDoc];
 	[newDoc makeWindowControllers];
 	[newDoc showWindows];
