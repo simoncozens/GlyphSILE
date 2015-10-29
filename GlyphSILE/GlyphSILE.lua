@@ -106,7 +106,7 @@ end
 
 doSILEDisplay = function(nsview)
   SILE.outputters.Glyphs.nsview = nsview
-  if not stringToTypeset then return end
+  if not stringToTypeset or not mode then return end
   local plain = require("classes/plain")
   local size = nsview.frame.size
   plain.options.papersize(size.width.."pt x "..size.height.."pt")
