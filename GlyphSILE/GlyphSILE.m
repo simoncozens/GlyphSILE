@@ -38,7 +38,7 @@
 @interface JSTDocument
 - (void) setKeywords:(NSDictionary *)keyWords;
 @end
-@interface GSDocument
+@interface GSDocument : NSObject
 @property (nonatomic, retain) GSFont* font;
 @end
 
@@ -50,6 +50,10 @@
 
 NSMutableString *buffer;
 NSTextView *luaResult;
+
++ (void) initialize {
+	[[NSUserDefaults standardUserDefaults] registerDefaults:@{@"SILE_FontSize": @24}];
+}
 
 - (id) init {
     self = [super init];
@@ -106,42 +110,42 @@ static const struct luaL_Reg printlib [] = {
 - (void) setupBehaviorMenu {
     NSInteger sel = [_SILEMode indexOfSelectedItem];
     [_SILEMode setAutoenablesItems:NO];
-
+	
     [_SILEMode removeAllItems];
-    [_SILEMode addItemWithTitle:@"Instances"];
-    [[_SILEMode itemAtIndex:0] setEnabled:FALSE];
-    
-    for (NSDocument* doc in [[NSApplication sharedApplication] orderedDocuments]) {
-        if ([doc isKindOfClass:NSClassFromString(@"GSDocument")]) {
-            GSFont* f = [(GSDocument*)doc font];
-            for (GSInstance* ins in [f instances]) {
-                NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
-                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f valueForKey:@"familyName"], [ins valueForKey:@"name"]] action:NULL keyEquivalent:@""];
-                [robj setObject:f forKey:@"font"];
-                [robj setObject:ins forKey:@"instance"];
-                [i setRepresentedObject:robj];
-                [[_SILEMode menu] addItem:i];
-            }
-        }
-    }
-    [[_SILEMode menu] addItem:[NSMenuItem separatorItem]];
-    [_SILEMode addItemWithTitle:@"Masters"];
-    [[_SILEMode itemAtIndex:([[_SILEMode itemArray]count]-1)] setEnabled:FALSE];
-    for (NSDocument* doc in [[NSApplication sharedApplication] orderedDocuments]) {
-        if ([doc isKindOfClass:NSClassFromString(@"GSDocument")]) {
-            GSFont* f = (GSFont *)[(GSDocument*)doc font];
-            for (GSFontMaster* master in [f fontMasters]) {
-                NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
-                NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f valueForKey:@"familyName"], [master name]] action:NULL keyEquivalent:@""];
-                [robj setObject:f forKey:@"font"];
-                [robj setObject:master forKey:@"master"];
-                [i setRepresentedObject:robj];
-                [[_SILEMode menu] addItem:i];
-            }
-
-        }
-    }
-    [_SILEMode selectItemAtIndex:sel];
+	GSDocument *doc = [(GSApplication *)[NSApplication sharedApplication] currentFontDocument];
+	if ([doc isKindOfClass:NSClassFromString(@"GSDocument")]) {
+		GSFont* f = (GSFont *)[(GSDocument*)doc font];
+	
+		[_SILEMode addItemWithTitle:@"Instances"];
+		[[_SILEMode itemAtIndex:0] setEnabled:FALSE];
+		
+		for (GSInstance* ins in [f instances]) {
+			NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
+			NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f valueForKey:@"familyName"], [ins valueForKey:@"name"]] action:NULL keyEquivalent:@""];
+			[robj setObject:f forKey:@"font"];
+			[robj setObject:ins forKey:@"instance"];
+			[i setRepresentedObject:robj];
+			[[_SILEMode menu] addItem:i];
+		}
+		[[_SILEMode menu] addItem:[NSMenuItem separatorItem]];
+		[_SILEMode addItemWithTitle:@"Masters"];
+		[[_SILEMode lastItem] setEnabled:FALSE];
+		for (GSFontMaster* master in [f fontMasters]) {
+			NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
+			NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f valueForKey:@"familyName"], [master name]] action:NULL keyEquivalent:@""];
+			[robj setObject:f forKey:@"font"];
+			[robj setObject:master forKey:@"master"];
+			[i setRepresentedObject:robj];
+			[[_SILEMode menu] addItem:i];
+		}
+		[_SILEMode selectItemAtIndex:sel];
+		NSString *SelectedItem = f.userData[@"SILE_SelectedBehavior"];
+		if (SelectedItem) {
+			sel = [_SILEMode indexOfItem:[_SILEMode itemWithTitle:SelectedItem]];
+		}
+		if (sel == 0) sel++;
+		[_SILEMode selectItemAtIndex:sel];
+	}
 }
 
 - (void) loadPlugin {
@@ -200,6 +204,11 @@ static const struct luaL_Reg printlib [] = {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showSILEPreview"]) {
         [_silePreviewWindow orderBack:self];
     }
+	NSString *code = [[NSUserDefaults standardUserDefaults] objectForKey:@"SILE_Code"];
+	if ([code length] > 0) {
+		[_SILEInput setString:code];
+	}
+	[_fontSizeSelection setIntegerValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"SILE_FontSize"]];
     [self setupBehaviorMenu];
 }
 
@@ -286,14 +295,22 @@ static const struct luaL_Reg printlib [] = {
 
 - (IBAction)drawSILEPreview:(id)sender {
     NSString *code = [_SILEInput string];
+	[[NSUserDefaults standardUserDefaults] setObject:code forKey:@"SILE_Code"];
+	[[NSUserDefaults standardUserDefaults] setInteger:[_fontSizeSelection integerValue] forKey:@"SILE_FontSize"];
     SILEPreviewView *view = _SILEOutput;
     NSMenuItem* mode =  [_SILEMode selectedItem];
-    if (!mode) return;
-
+    if (!mode || ![mode isEnabled]) return;
+	
     NSMutableDictionary* d = [mode representedObject];
+	if (!d) {
+		return;
+	}
     NSError *Error = nil;
     GSFont *f = [d objectForKey:@"font"];
     UKLog(@"f: %@", f);
+	
+	[f userData][@"SILE_SelectedBehavior"] = [mode title];
+	
     if ([d objectForKey:@"instance"]) {
         GSInstance *i = [d objectForKey:@"instance"];
 
