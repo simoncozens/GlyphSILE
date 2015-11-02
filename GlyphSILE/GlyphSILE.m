@@ -217,6 +217,7 @@ static const struct luaL_Reg printlib [] = {
 	if ([code length] > 0) {
 		[_SILEInput setString:code];
 	}
+	[_SILEInput setTextContainerInset:NSMakeSize(10, 4)];
 	[_fontSizeSelection setIntegerValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"SILE_FontSize"]];
     [self setupBehaviorMenu];
 }
