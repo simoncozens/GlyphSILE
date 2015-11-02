@@ -121,7 +121,14 @@ static const struct luaL_Reg printlib [] = {
 		
 		for (GSInstance* ins in [f instances]) {
 			NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
-			NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f valueForKey:@"familyName"], [ins valueForKey:@"name"]] action:NULL keyEquivalent:@""];
+			NSString *FullName;
+			if ([ins respondsToSelector:@selector(fullName)]) {
+				FullName = [ins fullName];
+			}
+			else {
+				FullName = [NSString stringWithFormat:@"%@ %@", [f familyName], [ins name]];
+			}
+			NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:FullName action:NULL keyEquivalent:@""];
 			[robj setObject:f forKey:@"font"];
 			[robj setObject:ins forKey:@"instance"];
 			[i setRepresentedObject:robj];
@@ -132,7 +139,7 @@ static const struct luaL_Reg printlib [] = {
 		[[_SILEMode lastItem] setEnabled:FALSE];
 		for (GSFontMaster* master in [f fontMasters]) {
 			NSMutableDictionary* robj = [[NSMutableDictionary alloc] init];
-			NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f valueForKey:@"familyName"], [master name]] action:NULL keyEquivalent:@""];
+			NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%@ %@", [f familyName], [master name]] action:NULL keyEquivalent:@""];
 			[robj setObject:f forKey:@"font"];
 			[robj setObject:master forKey:@"master"];
 			[i setRepresentedObject:robj];
