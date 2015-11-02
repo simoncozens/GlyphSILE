@@ -138,12 +138,14 @@ static const struct luaL_Reg printlib [] = {
 			[i setRepresentedObject:robj];
 			[[_SILEMode menu] addItem:i];
 		}
-		[_SILEMode selectItemAtIndex:sel];
-		NSString *SelectedItem = f.userData[@"SILE_SelectedBehavior"];
+		NSNumber *SelectedItem = f.userData[@"SILE_SelectedBehavior"];
 		if (SelectedItem) {
-			sel = [_SILEMode indexOfItem:[_SILEMode itemWithTitle:SelectedItem]];
+			NSMenuItem *Item = [_SILEMode itemAtIndex:[SelectedItem integerValue]];
+			if (Item && [Item isEnabled]) {
+				sel = [SelectedItem integerValue];
+			}
 		}
-		if (sel == 0) sel++;
+		while (sel <= 0) sel++;
 		[_SILEMode selectItemAtIndex:sel];
 	}
 }
@@ -308,9 +310,13 @@ static const struct luaL_Reg printlib [] = {
     NSError *Error = nil;
     GSFont *f = [d objectForKey:@"font"];
     UKLog(@"f: %@", f);
-	
-	[f userData][@"SILE_SelectedBehavior"] = [mode title];
-	
+	NSInteger itemIndex = [_SILEMode indexOfItem:mode];
+	if ([f respondsToSelector:@selector(setUserObject:forKey:)]) {
+		[f setUserObject:@(itemIndex) forKey:@"SILE_SelectedBehavior"];
+	}
+	else {
+		[f userData][@"SILE_SelectedBehavior"] = @(itemIndex);
+	}
     if ([d objectForKey:@"instance"]) {
         GSInstance *i = [d objectForKey:@"instance"];
 
