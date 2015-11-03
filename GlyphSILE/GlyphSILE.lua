@@ -66,13 +66,21 @@ SILE.outputters.Glyphs = {
   end,
   outputHbox = function (value,w)
     if value.complex then
+      local previousLayer = nil
       for i=1,#(value.items) do
-        local glyph = value.items[i].layer
-        if glyph then
-          SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(glyph, cursorX, cursorY, value.items[i].size)
+        local layer = value.items[i].layer
+        if layer then
+          if previousLayer then
+            kerning = previousLayer:rightKerningForLayer_(layer)
+            if kerning < 30000 then
+              cursorX = cursorX + (kerning * value.items[i].size)
+            end
+          end
+          SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(layer, cursorX, cursorY, value.items[i].size)
         else
           SILE.outputter.nsview:drawGlyph_atX_atY_(value.items[i].codepoint, cursorX, cursorY)
         end
+        previousLayer = layer
         cursorX = cursorX + value.items[i].width
       end
       return
