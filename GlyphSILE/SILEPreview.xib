@@ -41,7 +41,7 @@
                                     <rect key="frame" x="1" y="1" width="541" height="102"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="b40-Ay-Oxq">
+                                        <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" smartInsertDelete="YES" id="b40-Ay-Oxq">
                                             <rect key="frame" x="0.0" y="0.0" width="541" height="104"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
