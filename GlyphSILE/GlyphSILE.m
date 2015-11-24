@@ -319,12 +319,12 @@ static const struct luaL_Reg printlib [] = {
     GSFont *f = [d objectForKey:@"font"];
     UKLog(@"f: %@", f);
 	NSInteger itemIndex = [_SILEMode indexOfItem:mode];
-	if ([f respondsToSelector:@selector(setUserObject:forKey:)]) {
-		[f setUserObject:@(itemIndex) forKey:@"SILE_SelectedBehavior"];
-	}
-	else {
+//	if ([f respondsToSelector:@selector(setUserObject:forKey:)]) {
+//		[f setUserObject:@(itemIndex) forKey:@"SILE_SelectedBehavior"];
+//	}
+//	else {
 		[f userData][@"SILE_SelectedBehavior"] = @(itemIndex);
-	}
+//	}
     if ([d objectForKey:@"instance"]) {
         GSInstance *i = [d objectForKey:@"instance"];
 
