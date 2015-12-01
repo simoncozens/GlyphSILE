@@ -217,6 +217,10 @@ static const struct luaL_Reg printlib [] = {
 	if ([code length] > 0) {
 		[_SILEInput setString:code];
 	}
+    /* Turning off the checkbox had no effect. See http://stackoverflow.com/questions/19801601/nstextview-with-smart-quotes-disabled-still-replaces-quotes */
+    _SILEInput.automaticQuoteSubstitutionEnabled = NO;
+    _SILEInput.automaticDashSubstitutionEnabled = NO;
+    _SILEInput.automaticTextReplacementEnabled = NO;
 	[_SILEInput setTextContainerInset:NSMakeSize(10, 4)];
 	[_fontSizeSelection setIntegerValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"SILE_FontSize"]];
     [self setupBehaviorMenu];
