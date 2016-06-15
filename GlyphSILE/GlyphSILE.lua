@@ -69,6 +69,10 @@ SILE.outputters.Glyphs = {
       local previousLayer = nil
       for i=1,#(value.items) do
         local layer = value.items[i].layer
+        xPos = cursorX
+        yPos = cursorY
+        if value.items[i].x_offset then xPos = xPos + value.items[i].x_offset end
+        if value.items[i].y_offset then yPos = yPos + value.items[i].y_offset end
         if layer then
           if previousLayer then
             kerning = previousLayer:rightKerningForLayer_(layer)
@@ -76,9 +80,9 @@ SILE.outputters.Glyphs = {
               cursorX = cursorX + (kerning * value.items[i].size)
             end
           end
-          SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(layer, cursorX, cursorY, value.items[i].size)
+          SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(layer, xPos,yPos, value.items[i].size)
         else
-          SILE.outputter.nsview:drawGlyph_atX_atY_(value.items[i].codepoint, cursorX, cursorY)
+          SILE.outputter.nsview:drawGlyph_atX_atY_(value.items[i].codepoint, xPos,yPos)
         end
         previousLayer = layer
         cursorX = cursorX + value.items[i].width
