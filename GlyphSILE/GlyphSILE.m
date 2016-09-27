@@ -40,7 +40,9 @@ NSTextView *luaResult;
 	if (!Handler || CFStringCompare(Handler, CFSTR("com.GeorgSeifert.Glyphs2"), 0)) {
 		LSSetDefaultRoleHandlerForContentType(CFSTR("org.simon-cozens.sileDocument"), kLSRolesViewer, CFSTR("com.GeorgSeifert.Glyphs2"));
 	}
-	CFRelease(Handler);
+	if (Handler) {
+		CFRelease(Handler);
+	}
 }
 
 - (id) init {
