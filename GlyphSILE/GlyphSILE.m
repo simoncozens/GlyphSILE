@@ -36,7 +36,7 @@ NSTextView *luaResult;
 	[task setArguments:@[AppPath]];
 	[task launch];
 	
-	CFStringRef Handler = LSCopyDefaultRoleHandlerForContentType(CFSTR("org.simon-cozens.sileDocument"), kLSRolesViewer);
+	CFStringRef Handler = LSCopyDefaultRoleHandlerForContentType(CFSTR("org.simon-cozens.siledocument"), kLSRolesViewer);
 	if (!Handler || CFStringCompare(Handler, CFSTR("com.GeorgSeifert.Glyphs2"), 0)) {
 		LSSetDefaultRoleHandlerForContentType(CFSTR("org.simon-cozens.sileDocument"), kLSRolesViewer, CFSTR("com.GeorgSeifert.Glyphs2"));
 	}
