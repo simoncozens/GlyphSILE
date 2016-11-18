@@ -136,7 +136,10 @@ static const struct luaL_Reg printlib [] = {
     
     [(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
     NSString *Code = [[NSUserDefaults standardUserDefaults] objectForKey:@"LuaConsoleCode"];
-    [_incomingCode setString:Code];
+    if ([Code length] > 0) {
+        [_incomingCode setString:Code];
+    }
+    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showLuaConsole"]) {
         [_consoleWindow orderBack:self];
     }
