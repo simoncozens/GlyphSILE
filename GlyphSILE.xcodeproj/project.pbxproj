@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		563FC9611BE11BA9003529B5 /* GlyphSILEDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 563FC9601BE11BA9003529B5 /* GlyphSILEDocument.m */; };
+		563FC9641BE11ED4003529B5 /* GlyphSILEWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 563FC9631BE11ED4003529B5 /* GlyphSILEWindow.m */; };
+		563FC9A01BE13F50003529B5 /* SILEapp.app in Resources */ = {isa = PBXBuildFile; fileRef = 563FC99D1BE13E0A003529B5 /* SILEapp.app */; };
 		F42900921BB513B70047C6CF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42900911BB513B70047C6CF /* Cocoa.framework */; };
 		F42900951BB513B70047C6CF /* GlyphSILE-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = F42900941BB513B70047C6CF /* GlyphSILE-Prefix.pch */; };
 		F42900971BB513B70047C6CF /* GlyphSILE-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F42900961BB513B70047C6CF /* GlyphSILE-Info.plist */; };
@@ -81,6 +84,30 @@
 		F4E89FBE1BE0CDF000E9D5CA /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E89FBD1BE0CDF000E9D5CA /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		563FC99C1BE13E0A003529B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 563FC9971BE13E09003529B5 /* SILEapp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 563FC96E1BE13E09003529B5;
+			remoteInfo = SILEapp;
+		};
+		563FC99E1BE13E0A003529B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 563FC9971BE13E09003529B5 /* SILEapp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 563FC9871BE13E09003529B5;
+			remoteInfo = SILEappTests;
+		};
+		563FC9A11BE13F67003529B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 563FC9971BE13E09003529B5 /* SILEapp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 563FC96D1BE13E09003529B5;
+			remoteInfo = SILEapp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		F4B853C11BDBC6B0000B26CF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -97,6 +124,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		563FC95F1BE11BA9003529B5 /* GlyphSILEDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlyphSILEDocument.h; sourceTree = "<group>"; };
+		563FC9601BE11BA9003529B5 /* GlyphSILEDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlyphSILEDocument.m; sourceTree = "<group>"; };
+		563FC9621BE11ED4003529B5 /* GlyphSILEWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlyphSILEWindow.h; sourceTree = "<group>"; };
+		563FC9631BE11ED4003529B5 /* GlyphSILEWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlyphSILEWindow.m; sourceTree = "<group>"; };
+		563FC9971BE13E09003529B5 /* SILEapp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SILEapp.xcodeproj; path = app/SILEapp/SILEapp.xcodeproj; sourceTree = "<group>"; };
 		F429008E1BB513B70047C6CF /* GlyphSILE.glyphsPlugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlyphSILE.glyphsPlugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42900911BB513B70047C6CF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		F42900941BB513B70047C6CF /* GlyphSILE-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GlyphSILE-Prefix.pch"; sourceTree = "<group>"; };
@@ -221,9 +253,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		563FC9981BE13E09003529B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				563FC99D1BE13E0A003529B5 /* SILEapp.app */,
+				563FC99F1BE13E0A003529B5 /* SILEappTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F42900851BB513B70047C6CF = {
 			isa = PBXGroup;
 			children = (
+				563FC9971BE13E09003529B5 /* SILEapp.xcodeproj */,
 				F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */,
 				F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */,
 				F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */,
@@ -266,6 +308,10 @@
 				F42900961BB513B70047C6CF /* GlyphSILE-Info.plist */,
 				F42900981BB513B70047C6CF /* GlyphSILE.h */,
 				F42900991BB513B70047C6CF /* GlyphSILE.m */,
+				563FC95F1BE11BA9003529B5 /* GlyphSILEDocument.h */,
+				563FC9601BE11BA9003529B5 /* GlyphSILEDocument.m */,
+				563FC9621BE11ED4003529B5 /* GlyphSILEWindow.h */,
+				563FC9631BE11ED4003529B5 /* GlyphSILEWindow.m */,
 				F4BDCF8C1BC540E70013A9EF /* GlyphSILE.lua */,
 				F47783811BB7FC9900B55550 /* GlyphsApp.lua */,
 				F477837F1BB5FCB800B55550 /* LuaConsole.xib */,
@@ -411,6 +457,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				563FC9A21BE13F67003529B5 /* PBXTargetDependency */,
 			);
 			name = GlyphSILE;
 			productName = GlyphSILE;
@@ -441,12 +488,35 @@
 			mainGroup = F42900851BB513B70047C6CF;
 			productRefGroup = F429008F1BB513B70047C6CF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 563FC9981BE13E09003529B5 /* Products */;
+					ProjectRef = 563FC9971BE13E09003529B5 /* SILEapp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F429008D1BB513B70047C6CF /* GlyphSILE */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		563FC99D1BE13E0A003529B5 /* SILEapp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SILEapp.app;
+			remoteRef = 563FC99C1BE13E0A003529B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		563FC99F1BE13E0A003529B5 /* SILEappTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SILEappTests.xctest;
+			remoteRef = 563FC99E1BE13E0A003529B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F429008C1BB513B70047C6CF /* Resources */ = {
@@ -479,6 +549,7 @@
 				F47CE5651BC15889009C76C1 /* osi-certified-72x60.png in Resources */,
 				F42900971BB513B70047C6CF /* GlyphSILE-Info.plist in Resources */,
 				F42900951BB513B70047C6CF /* GlyphSILE-Prefix.pch in Resources */,
+				563FC9A01BE13F50003529B5 /* SILEapp.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563FC9641BE11ED4003529B5 /* GlyphSILEWindow.m in Sources */,
 				F47CE56D1BC15889009C76C1 /* lcode.c in Sources */,
 				F47CE56E1BC15889009C76C1 /* lcorolib.c in Sources */,
 				F47CE5741BC15889009C76C1 /* lfunc.c in Sources */,
@@ -511,6 +583,7 @@
 				F47CE57D1BC15889009C76C1 /* lopcodes.c in Sources */,
 				F47CE5781BC15889009C76C1 /* llex.c in Sources */,
 				F47CE5881BC15889009C76C1 /* lundump.c in Sources */,
+				563FC9611BE11BA9003529B5 /* GlyphSILEDocument.m in Sources */,
 				F429009A1BB513B70047C6CF /* GlyphSILE.m in Sources */,
 				F47CE5721BC15889009C76C1 /* ldo.c in Sources */,
 				F47CE57B1BC15889009C76C1 /* loadlib.c in Sources */,
@@ -530,6 +603,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		563FC9A21BE13F67003529B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SILEapp;
+			targetProxy = 563FC9A11BE13F67003529B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F429009F1BB513B70047C6CF /* Debug */ = {
