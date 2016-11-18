@@ -64,6 +64,7 @@ SILE.outputters.Glyphs = {
   setFont = function (options)
     -- if SILE.font._key(options) == lastkey then return end
     lastkey = SILE.font._key(options)
+    print("Setting font ",tostring(options))
     font = SILE.font.cache(options, SILE.shaper.getFace)
     font.data = nil
     SILE.outputters.Glyphs.nsview:loadFontFromPath_withHeight_(font.filename, font.pointsize)
@@ -87,7 +88,7 @@ SILE.outputters.Glyphs = {
           end
           SILE.outputter.nsview:drawGSLayer_atX_atY_withSize_(layer, xPos,yPos, value.items[i].size)
         else
-          SILE.outputter.nsview:drawGlyph_atX_atY_(value.items[i].codepoint, xPos,yPos)
+          SILE.outputter.nsview:drawGlyph_atX_atY_(value.items[i].gid, xPos,yPos)
         end
         previousLayer = layer
         cursorX = cursorX + value.items[i].width
@@ -146,4 +147,4 @@ doSILEDisplay = function(nsview)
   plain:finish()
 end
 
-SILE.debugFlags["fonts"] = true
+-- SILE.debugFlags["fonts"] = true
