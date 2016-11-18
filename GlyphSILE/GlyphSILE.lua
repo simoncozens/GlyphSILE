@@ -4,6 +4,7 @@ package.cpath = home.."/shared-libraries/?.so;"..package.cpath
 require("core/sile")
 
 SILE.backend = "Glyphs" -- yes it is.
+require("core/libtexpdf-output")
 require("core/harfbuzz-shaper")
 
 SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
@@ -13,17 +14,19 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
 
   shapeToken = function (self, text, orig)
     options = SILE.font.loadDefaults(orig)
-    if not options.font:match("^Glyphs:") then -- abuse
+    print("Shaping token "..text, tostring(options))
+    if not options.family:match("^Glyphs:") then -- abuse
+      print("Using harfbuzz")
       return SILE.shapers.harfbuzz:shapeToken(text, orig)
     end
     local font = self.gsfont
     options.filename = font.tempOTFFont
     local scale = options.size / font.upm -- design size?
+    print("Calling harfbuzz on OTFfont "..font.tempOTFFont)
     local items = SILE.shapers.harfbuzz:shapeToken(text, options)
-    local masterid = options.font:gsub("Glyphs:Master:","")
+    local masterid = options.family:gsub("Glyphs:Master:","")
     local master = font.masters[masterid]
     for i =1,#items do
-      print(tostring(items[i]))
       local g = font.glyphs[items[i].name]
       if g then
         local layer = g.layers[masterid]
@@ -38,6 +41,7 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
         end
       end
     end
+    print(tostring(items))
     return items
   end
 }
@@ -53,6 +57,7 @@ SILE.outputters.Glyphs = {
   finish = function () end,
   newPage = function () lastkey = nil end,
   moveTo = function (x,y)
+    print("Moving to ",x,y)
     cursorX = x
     cursorY = SILE.outputter.height - y
   end,
@@ -114,6 +119,7 @@ doGlyphSILE = function(s, v, fs, m)
   mode = m
   SILE.outputters.Glyphs.nsview:setNeedsDisplay_(true)
   fontsize = fs
+  SILE.fontCache = {}
 end
 
 doSILEDisplay = function(nsview)
@@ -136,7 +142,8 @@ doSILEDisplay = function(nsview)
     SILE.settings.set("font.filename", "")
   end
   SILE.doTexlike(stringToTypeset)
-  SILE.typesetter:leaveHmode()
   SILE.typesetter:chuck() -- XXX
   plain:finish()
 end
+
+SILE.debugFlags["fonts"] = true

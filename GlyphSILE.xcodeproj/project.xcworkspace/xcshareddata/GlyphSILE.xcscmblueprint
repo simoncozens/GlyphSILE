@@ -1,0 +1,51 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7878BAE1D7E167C60458570301FC1CAF195DCA30",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7878BAE1D7E167C60458570301FC1CAF195DCA30" : 0,
+    "94E62D029846C858A75A58A1D28EC7AABAD5BB7C" : 9223372036854775807,
+    "B401712F9C07EE38DD403251CE15B9701E2674C0" : 0,
+    "70F3A09E8BF38B4FE1AE4A3E6D5E0B1E1959CD17" : 0,
+    "AA3E03575AF7008D8603531AA66E3ECD73160503" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4BFD6A1B-6470-45CA-B79C-3B7E0163E8FF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7878BAE1D7E167C60458570301FC1CAF195DCA30" : "GlyphSILE\/",
+    "94E62D029846C858A75A58A1D28EC7AABAD5BB7C" : "GlyphSILE\/sile\/libtexpdf\/",
+    "B401712F9C07EE38DD403251CE15B9701E2674C0" : "GlyphSILE\/sile\/",
+    "70F3A09E8BF38B4FE1AE4A3E6D5E0B1E1959CD17" : "GlyphSILE\/NSLua\/",
+    "AA3E03575AF7008D8603531AA66E3ECD73160503" : "GlyphSILE\/lua\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GlyphSILE",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GlyphSILE.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:simoncozens\/EasyLua.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "70F3A09E8BF38B4FE1AE4A3E6D5E0B1E1959CD17"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:simoncozens\/GlyphSILE.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7878BAE1D7E167C60458570301FC1CAF195DCA30"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/simoncozens\/libtexpdf.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "94E62D029846C858A75A58A1D28EC7AABAD5BB7C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/lua\/lua.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AA3E03575AF7008D8603531AA66E3ECD73160503"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/simoncozens\/sile.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B401712F9C07EE38DD403251CE15B9701E2674C0"
+    }
+  ]
+}

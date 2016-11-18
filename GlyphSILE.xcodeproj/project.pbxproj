@@ -23,6 +23,9 @@
 		F43BEEDC1BC651CD005BFC39 /* shared-libraries in Resources */ = {isa = PBXBuildFile; fileRef = F43BEEDB1BC651CD005BFC39 /* shared-libraries */; };
 		F441103A1BC3F75500E38A84 /* SILEPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44110391BC3F75500E38A84 /* SILEPreview.xib */; };
 		F45D97F11BCA88FD008DCF76 /* SILEPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D97F01BCA88FD008DCF76 /* SILEPreviewView.m */; };
+		F468F3721DDE81B9002B5A85 /* libtexpdf.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F468F3711DDE81B9002B5A85 /* libtexpdf.0.dylib */; };
+		F468F3731DDE81DF002B5A85 /* libtexpdf.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F468F3711DDE81B9002B5A85 /* libtexpdf.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F468F3751DDE8E17002B5A85 /* BUILDING.md in Sources */ = {isa = PBXBuildFile; fileRef = F468F3741DDE8E17002B5A85 /* BUILDING.md */; };
 		F47783801BB5FCB800B55550 /* LuaConsole.xib in Resources */ = {isa = PBXBuildFile; fileRef = F477837F1BB5FCB800B55550 /* LuaConsole.xib */; };
 		F47783821BB7FC9900B55550 /* GlyphsApp.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47783811BB7FC9900B55550 /* GlyphsApp.lua */; };
 		F47CE55E1BC15889009C76C1 /* contents.html in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5161BC15889009C76C1 /* contents.html */; };
@@ -115,6 +118,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F468F3731DDE81DF002B5A85 /* libtexpdf.0.dylib in CopyFiles */,
 				F4B853C21BDBC6C5000B26CF /* libfontconfig.1.dylib in CopyFiles */,
 				F4B853C31BDBC6C8000B26CF /* libfreetype.6.dylib in CopyFiles */,
 				F4B853C41BDBC6CA000B26CF /* libharfbuzz.0.dylib in CopyFiles */,
@@ -147,6 +151,8 @@
 		F44110391BC3F75500E38A84 /* SILEPreview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SILEPreview.xib; sourceTree = "<group>"; };
 		F45D97EF1BCA88BC008DCF76 /* SILEPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SILEPreviewView.h; sourceTree = "<group>"; };
 		F45D97F01BCA88FD008DCF76 /* SILEPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SILEPreviewView.m; sourceTree = "<group>"; };
+		F468F3711DDE81B9002B5A85 /* libtexpdf.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtexpdf.0.dylib; path = frameworks/libtexpdf.0.dylib; sourceTree = "<group>"; };
+		F468F3741DDE8E17002B5A85 /* BUILDING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = BUILDING.md; sourceTree = "<group>"; };
 		F477837F1BB5FCB800B55550 /* LuaConsole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LuaConsole.xib; sourceTree = "<group>"; };
 		F47783811BB7FC9900B55550 /* GlyphsApp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GlyphsApp.lua; sourceTree = "<group>"; };
 		F47CE5161BC15889009C76C1 /* contents.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = contents.html; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 				F4B853BF1BDBC6A4000B26CF /* libfreetype.6.dylib in Frameworks */,
 				F429009D1BB513B70047C6CF /* GlyphsCore.framework in Frameworks */,
 				F42900921BB513B70047C6CF /* Cocoa.framework in Frameworks */,
+				F468F3721DDE81B9002B5A85 /* libtexpdf.0.dylib in Frameworks */,
 				F4B853BE1BDBC6A4000B26CF /* libfontconfig.1.dylib in Frameworks */,
 				F4B853C01BDBC6A4000B26CF /* libharfbuzz.0.dylib in Frameworks */,
 			);
@@ -268,7 +275,9 @@
 				563FC9971BE13E09003529B5 /* SILEapp.xcodeproj */,
 				F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */,
 				F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */,
+				F468F3741DDE8E17002B5A85 /* BUILDING.md */,
 				F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */,
+				F468F3711DDE81B9002B5A85 /* libtexpdf.0.dylib */,
 				F43BEEDB1BC651CD005BFC39 /* shared-libraries */,
 				F43BEECF1BC55C5E005BFC39 /* classes */,
 				F43BEED01BC55C5E005BFC39 /* core */,
@@ -568,6 +577,7 @@
 				F47CE5771BC15889009C76C1 /* liolib.c in Sources */,
 				F47CE57E1BC15889009C76C1 /* loslib.c in Sources */,
 				F47CE56B1BC15889009C76C1 /* lbaselib.c in Sources */,
+				F468F3751DDE8E17002B5A85 /* BUILDING.md in Sources */,
 				F47CE5851BC15889009C76C1 /* ltm.c in Sources */,
 				F47CE5701BC15889009C76C1 /* ldblib.c in Sources */,
 				F47CE56C1BC15889009C76C1 /* lbitlib.c in Sources */,
