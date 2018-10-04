@@ -77,6 +77,24 @@
 		F47CE59A1BC158A7009C76C1 /* LuaBridge.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5911BC158A7009C76C1 /* LuaBridge.lua */; };
 		F47CE59B1BC158A7009C76C1 /* LuaBridgedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5931BC158A7009C76C1 /* LuaBridgedFunctions.m */; };
 		F47CE59C1BC158A7009C76C1 /* NSLua.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5951BC158A7009C76C1 /* NSLua.m */; };
+		F4B1FCD721661E23006F5733 /* libicui18n.61.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCC421661E20006F5733 /* libicui18n.61.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCD821661E23006F5733 /* libicudata.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCC621661E20006F5733 /* libicudata.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCD921661E23006F5733 /* libicutest.61.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCC721661E20006F5733 /* libicutest.61.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCDA21661E23006F5733 /* libicuio.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCC821661E21006F5733 /* libicuio.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCDB21661E23006F5733 /* libicuuc.61.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCC921661E21006F5733 /* libicuuc.61.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCDC21661E23006F5733 /* libicutest.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCCA21661E21006F5733 /* libicutest.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCDD21661E23006F5733 /* libicutest.61.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCCB21661E21006F5733 /* libicutest.61.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCDE21661E23006F5733 /* libicui18n.61.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCCC21661E21006F5733 /* libicui18n.61.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCDF21661E23006F5733 /* libicui18n.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCCD21661E21006F5733 /* libicui18n.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE021661E23006F5733 /* libicudata.61.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCCE21661E21006F5733 /* libicudata.61.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE121661E23006F5733 /* libicutu.61.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCCF21661E22006F5733 /* libicutu.61.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE221661E23006F5733 /* libicutu.61.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCD021661E22006F5733 /* libicutu.61.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE321661E23006F5733 /* libicutu.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCD121661E22006F5733 /* libicutu.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE421661E23006F5733 /* libicuuc.61.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCD221661E22006F5733 /* libicuuc.61.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE521661E23006F5733 /* libicudata.61.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCD321661E22006F5733 /* libicudata.61.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE621661E23006F5733 /* libicuuc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCD421661E23006F5733 /* libicuuc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE721661E23006F5733 /* libicuio.61.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCD521661E23006F5733 /* libicuio.61.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4B1FCE821661E23006F5733 /* libicuio.61.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCD621661E23006F5733 /* libicuio.61.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F4B853BE1BDBC6A4000B26CF /* libfontconfig.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */; };
 		F4B853BF1BDBC6A4000B26CF /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */; };
 		F4B853C01BDBC6A4000B26CF /* libharfbuzz.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */; };
@@ -118,6 +136,24 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F4B1FCD721661E23006F5733 /* libicui18n.61.1.dylib in CopyFiles */,
+				F4B1FCD821661E23006F5733 /* libicudata.dylib in CopyFiles */,
+				F4B1FCD921661E23006F5733 /* libicutest.61.1.dylib in CopyFiles */,
+				F4B1FCDA21661E23006F5733 /* libicuio.dylib in CopyFiles */,
+				F4B1FCDB21661E23006F5733 /* libicuuc.61.dylib in CopyFiles */,
+				F4B1FCDC21661E23006F5733 /* libicutest.dylib in CopyFiles */,
+				F4B1FCDD21661E23006F5733 /* libicutest.61.dylib in CopyFiles */,
+				F4B1FCDE21661E23006F5733 /* libicui18n.61.dylib in CopyFiles */,
+				F4B1FCDF21661E23006F5733 /* libicui18n.dylib in CopyFiles */,
+				F4B1FCE021661E23006F5733 /* libicudata.61.1.dylib in CopyFiles */,
+				F4B1FCE121661E23006F5733 /* libicutu.61.1.dylib in CopyFiles */,
+				F4B1FCE221661E23006F5733 /* libicutu.61.dylib in CopyFiles */,
+				F4B1FCE321661E23006F5733 /* libicutu.dylib in CopyFiles */,
+				F4B1FCE421661E23006F5733 /* libicuuc.61.1.dylib in CopyFiles */,
+				F4B1FCE521661E23006F5733 /* libicudata.61.dylib in CopyFiles */,
+				F4B1FCE621661E23006F5733 /* libicuuc.dylib in CopyFiles */,
+				F4B1FCE721661E23006F5733 /* libicuio.61.dylib in CopyFiles */,
+				F4B1FCE821661E23006F5733 /* libicuio.61.1.dylib in CopyFiles */,
 				F468F3731DDE81DF002B5A85 /* libtexpdf.0.dylib in CopyFiles */,
 				F4B853C21BDBC6C5000B26CF /* libfontconfig.1.dylib in CopyFiles */,
 				F4B853C31BDBC6C8000B26CF /* libfreetype.6.dylib in CopyFiles */,
@@ -153,6 +189,8 @@
 		F45D97F01BCA88FD008DCF76 /* SILEPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SILEPreviewView.m; sourceTree = "<group>"; };
 		F468F3711DDE81B9002B5A85 /* libtexpdf.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtexpdf.0.dylib; path = frameworks/libtexpdf.0.dylib; sourceTree = "<group>"; };
 		F468F3741DDE8E17002B5A85 /* BUILDING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = BUILDING.md; sourceTree = "<group>"; };
+		F46CC2E32166256100B732F8 /* packages */ = {isa = PBXFileReference; lastKnownFileType = folder; name = packages; path = ../../../../work/sil/fontproof/packages; sourceTree = "<group>"; };
+		F46CC2E42166256100B732F8 /* classes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = classes; path = ../../../../work/sil/fontproof/classes; sourceTree = "<group>"; };
 		F477837F1BB5FCB800B55550 /* LuaConsole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LuaConsole.xib; sourceTree = "<group>"; };
 		F47783811BB7FC9900B55550 /* GlyphsApp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GlyphsApp.lua; sourceTree = "<group>"; };
 		F47CE5161BC15889009C76C1 /* contents.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = contents.html; sourceTree = "<group>"; };
@@ -235,6 +273,24 @@
 		F47CE5941BC158A7009C76C1 /* NSLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLua.h; sourceTree = "<group>"; };
 		F47CE5951BC158A7009C76C1 /* NSLua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLua.m; sourceTree = "<group>"; };
 		F47CE5961BC158A7009C76C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F4B1FCC421661E20006F5733 /* libicui18n.61.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicui18n.61.1.dylib; path = frameworks/libicui18n.61.1.dylib; sourceTree = "<group>"; };
+		F4B1FCC621661E20006F5733 /* libicudata.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicudata.dylib; path = frameworks/libicudata.dylib; sourceTree = "<group>"; };
+		F4B1FCC721661E20006F5733 /* libicutest.61.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicutest.61.1.dylib; path = frameworks/libicutest.61.1.dylib; sourceTree = "<group>"; };
+		F4B1FCC821661E21006F5733 /* libicuio.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicuio.dylib; path = frameworks/libicuio.dylib; sourceTree = "<group>"; };
+		F4B1FCC921661E21006F5733 /* libicuuc.61.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicuuc.61.dylib; path = frameworks/libicuuc.61.dylib; sourceTree = "<group>"; };
+		F4B1FCCA21661E21006F5733 /* libicutest.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicutest.dylib; path = frameworks/libicutest.dylib; sourceTree = "<group>"; };
+		F4B1FCCB21661E21006F5733 /* libicutest.61.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicutest.61.dylib; path = frameworks/libicutest.61.dylib; sourceTree = "<group>"; };
+		F4B1FCCC21661E21006F5733 /* libicui18n.61.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicui18n.61.dylib; path = frameworks/libicui18n.61.dylib; sourceTree = "<group>"; };
+		F4B1FCCD21661E21006F5733 /* libicui18n.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicui18n.dylib; path = frameworks/libicui18n.dylib; sourceTree = "<group>"; };
+		F4B1FCCE21661E21006F5733 /* libicudata.61.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicudata.61.1.dylib; path = frameworks/libicudata.61.1.dylib; sourceTree = "<group>"; };
+		F4B1FCCF21661E22006F5733 /* libicutu.61.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicutu.61.1.dylib; path = frameworks/libicutu.61.1.dylib; sourceTree = "<group>"; };
+		F4B1FCD021661E22006F5733 /* libicutu.61.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicutu.61.dylib; path = frameworks/libicutu.61.dylib; sourceTree = "<group>"; };
+		F4B1FCD121661E22006F5733 /* libicutu.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicutu.dylib; path = frameworks/libicutu.dylib; sourceTree = "<group>"; };
+		F4B1FCD221661E22006F5733 /* libicuuc.61.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicuuc.61.1.dylib; path = frameworks/libicuuc.61.1.dylib; sourceTree = "<group>"; };
+		F4B1FCD321661E22006F5733 /* libicudata.61.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicudata.61.dylib; path = frameworks/libicudata.61.dylib; sourceTree = "<group>"; };
+		F4B1FCD421661E23006F5733 /* libicuuc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicuuc.dylib; path = frameworks/libicuuc.dylib; sourceTree = "<group>"; };
+		F4B1FCD521661E23006F5733 /* libicuio.61.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicuio.61.dylib; path = frameworks/libicuio.61.dylib; sourceTree = "<group>"; };
+		F4B1FCD621661E23006F5733 /* libicuio.61.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicuio.61.1.dylib; path = frameworks/libicuio.61.1.dylib; sourceTree = "<group>"; };
 		F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfontconfig.1.dylib; path = frameworks/libfontconfig.1.dylib; sourceTree = "<group>"; };
 		F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = frameworks/libfreetype.6.dylib; sourceTree = "<group>"; };
 		F4B853BD1BDBC6A4000B26CF /* libharfbuzz.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libharfbuzz.0.dylib; path = frameworks/libharfbuzz.0.dylib; sourceTree = "<group>"; };
@@ -272,6 +328,24 @@
 		F42900851BB513B70047C6CF = {
 			isa = PBXGroup;
 			children = (
+				F4B1FCCE21661E21006F5733 /* libicudata.61.1.dylib */,
+				F4B1FCD321661E22006F5733 /* libicudata.61.dylib */,
+				F4B1FCC621661E20006F5733 /* libicudata.dylib */,
+				F4B1FCC421661E20006F5733 /* libicui18n.61.1.dylib */,
+				F4B1FCCC21661E21006F5733 /* libicui18n.61.dylib */,
+				F4B1FCCD21661E21006F5733 /* libicui18n.dylib */,
+				F4B1FCD621661E23006F5733 /* libicuio.61.1.dylib */,
+				F4B1FCD521661E23006F5733 /* libicuio.61.dylib */,
+				F4B1FCC821661E21006F5733 /* libicuio.dylib */,
+				F4B1FCC721661E20006F5733 /* libicutest.61.1.dylib */,
+				F4B1FCCB21661E21006F5733 /* libicutest.61.dylib */,
+				F4B1FCCA21661E21006F5733 /* libicutest.dylib */,
+				F4B1FCCF21661E22006F5733 /* libicutu.61.1.dylib */,
+				F4B1FCD021661E22006F5733 /* libicutu.61.dylib */,
+				F4B1FCD121661E22006F5733 /* libicutu.dylib */,
+				F4B1FCD221661E22006F5733 /* libicuuc.61.1.dylib */,
+				F4B1FCC921661E21006F5733 /* libicuuc.61.dylib */,
+				F4B1FCD421661E23006F5733 /* libicuuc.dylib */,
 				563FC9971BE13E09003529B5 /* SILEapp.xcodeproj */,
 				F4B853BB1BDBC6A4000B26CF /* libfontconfig.1.dylib */,
 				F4B853BC1BDBC6A4000B26CF /* libfreetype.6.dylib */,
@@ -317,6 +391,8 @@
 				F42900961BB513B70047C6CF /* GlyphSILE-Info.plist */,
 				F42900981BB513B70047C6CF /* GlyphSILE.h */,
 				F42900991BB513B70047C6CF /* GlyphSILE.m */,
+				F46CC2E42166256100B732F8 /* classes */,
+				F46CC2E32166256100B732F8 /* packages */,
 				563FC95F1BE11BA9003529B5 /* GlyphSILEDocument.h */,
 				563FC9601BE11BA9003529B5 /* GlyphSILEDocument.m */,
 				563FC9621BE11ED4003529B5 /* GlyphSILEWindow.h */,
@@ -479,7 +555,7 @@
 		F42900861BB513B70047C6CF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Simon Cozens";
 				TargetAttributes = {
 					F429008D1BB513B70047C6CF = {
@@ -631,14 +707,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -674,14 +758,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -707,7 +799,7 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
-				DSTROOT = "~/Library/Application Support/Glyphs/Plugins";
+				DSTROOT = "$(HOME)/Library/Application Support/Glyphs/Plugins";
 				FRAMEWORK_SEARCH_PATHS = "$(SYSTEM_APPS_DIR)/Glyphs.app/Contents/Frameworks";
 				GCC_PREFIX_HEADER = "GlyphSILE/GlyphSILE-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (

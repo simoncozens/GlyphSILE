@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GlyphSILEWindow">
@@ -20,7 +21,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="543" height="359"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="489" height="241"/>
             <view key="contentView" id="4YX-wT-RuF">
                 <rect key="frame" x="0.0" y="0.0" width="543" height="359"/>
@@ -47,8 +48,6 @@
                                             <size key="minSize" width="543" height="113"/>
                                             <size key="maxSize" width="724" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="543" height="104"/>
-                                            <size key="maxSize" width="724" height="10000000"/>
                                             <connections>
                                                 <binding destination="FOW-3r-cCk" name="value" keyPath="selection.text" id="CdU-1Q-tIL">
                                                     <dictionary key="options">
@@ -142,15 +141,24 @@ DQ
                             </menu>
                         </popUpButtonCell>
                     </popUpButton>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nFW-V8-80O">
+                        <rect key="frame" x="390" y="-1" width="65" height="32"/>
+                        <buttonCell key="cell" type="push" title="PDF" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4qT-jS-8DT">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="w9Z-fw-vQe" secondAttribute="bottom" constant="33" id="3i2-po-yRv"/>
+                    <constraint firstItem="VU3-tX-hOR" firstAttribute="leading" secondItem="nFW-V8-80O" secondAttribute="trailing" constant="14" id="9rx-85-XVj"/>
                     <constraint firstItem="FXH-4R-r6x" firstAttribute="centerY" secondItem="VU3-tX-hOR" secondAttribute="centerY" id="IyU-GL-Ytz"/>
                     <constraint firstItem="FXH-4R-r6x" firstAttribute="leading" secondItem="QhL-GO-GhR" secondAttribute="trailing" constant="8" symbolic="YES" id="TQx-lC-KSe"/>
                     <constraint firstAttribute="trailing" secondItem="VU3-tX-hOR" secondAttribute="trailing" constant="20" symbolic="YES" id="Z0J-V8-hSs"/>
                     <constraint firstItem="FXH-4R-r6x" firstAttribute="baseline" secondItem="QhL-GO-GhR" secondAttribute="baseline" constant="1" id="c8S-VD-ijX"/>
                     <constraint firstItem="VU3-tX-hOR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FXH-4R-r6x" secondAttribute="trailing" constant="15" id="cfS-bV-mxz"/>
                     <constraint firstItem="w9Z-fw-vQe" firstAttribute="leading" secondItem="4YX-wT-RuF" secondAttribute="leading" id="cpf-St-TY6"/>
+                    <constraint firstItem="nFW-V8-80O" firstAttribute="baseline" secondItem="VU3-tX-hOR" secondAttribute="baseline" id="dHc-GM-X9F"/>
                     <constraint firstItem="QhL-GO-GhR" firstAttribute="leading" secondItem="5lA-ym-BbD" secondAttribute="trailing" constant="8" symbolic="YES" id="eXF-KN-tIG"/>
                     <constraint firstItem="5lA-ym-BbD" firstAttribute="centerY" secondItem="VU3-tX-hOR" secondAttribute="centerY" id="gld-3X-Gsb"/>
                     <constraint firstItem="w9Z-fw-vQe" firstAttribute="top" secondItem="4YX-wT-RuF" secondAttribute="top" id="jWV-cr-llP"/>

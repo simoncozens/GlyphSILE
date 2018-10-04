@@ -39,7 +39,7 @@
     // Add any code here that needs to be executed once the windowController has loaded the document's window.
 }
 
-- (NSData *)dataRepresentationOfType:(NSString *)aType {
+- (NSData *)dataOfType:(NSString *)aType error:(NSError * _Nullable __autoreleasing * _Nullable)outError {
 	if ([self.text length] > 0) {
 		return [self.text dataUsingEncoding:NSUTF8StringEncoding];
 	}
@@ -48,9 +48,13 @@
 	}
 }
 
-- (BOOL)loadDataRepresentation:(NSData *)data ofType:(NSString *)aType {
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)aType error:(NSError * _Nullable __autoreleasing * _Nullable)outError {
 	self.text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	return YES;
+}
+
++ (NSArray *)readableTypes {
+    return @[@"org.simon-cozens.sileDocument"];
 }
 
 + (NSArray *)writableTypes {

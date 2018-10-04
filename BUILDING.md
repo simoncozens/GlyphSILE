@@ -1,10 +1,14 @@
-To build GlyphSILE and its needed shared libraries from scratch:
+To build GlyphSILE and its needed shared libraries from scratch, the `build-dependencies.sh` should cover most of it. Then run `xcode-build` and the plugin should appear in GlyphSILE/build/Release/GlyphSILE.glyphsPlugin
+
+If you need to do it manually:
 
 * Frameworks 
 
 ** libpng
 
 Copy this over and relocate
+
+    cp /usr/local/lib/libpng*.dylib frameworks/
 
 ** Harfbuzz
 
@@ -28,13 +32,6 @@ Relocate using `relocate-self` twice, then fix up:
 
     $ install_name_tool -change /usr/local/opt/libpng/lib/libpng16.16.dylib @rpath/libpng16.16.dylib libfreetype.6.dylib
 
-** Harfbuzz again
-
-Sadly we still need a freetype-enabled harfbuzz for CFF. Urgh. Rebuild again:
-
-    $ ./configure --without-cairo --without-glib --without-graphite2 --without-icu --without-fontconfig
-
-
 ** libtexpdf
 
 This will need a copy of libpng installed and relocated. Make `libtexpdf` as normal, copy to `frameworks` and then:
@@ -49,6 +46,9 @@ Copy in `libpng16.16.dylib` and relocate:
 ** Other libraries
 
 Make a minimal freetype, and relocate all paths to `@rpath`; also `libfontconfig`.
+
+SILE now requires ICU, which is fun. :-( We copy it rather than build it. 
+
 
 * SILE libraries
 

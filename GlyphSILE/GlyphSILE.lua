@@ -14,15 +14,15 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
 
   shapeToken = function (self, text, orig)
     options = SILE.font.loadDefaults(orig)
-    print("Shaping token "..text, tostring(options))
+    --print("Shaping token "..text, tostring(options))
     if not options.family:match("^Glyphs:") then -- abuse
-      print("Using harfbuzz")
+      --print("Using harfbuzz")
       return SILE.shapers.harfbuzz:shapeToken(text, orig)
     end
     local font = self.gsfont
     options.filename = font.tempOTFFont
     local scale = options.size / font.upm -- design size?
-    print("Calling harfbuzz on OTFfont "..font.tempOTFFont)
+    --print("Calling harfbuzz on OTFfont "..font.tempOTFFont)
     local items = SILE.shapers.harfbuzz:shapeToken(text, options)
     local masterid = options.family:gsub("Glyphs:Master:","")
     local master = font.masters[masterid]
@@ -41,7 +41,7 @@ SILE.shapers.Glyphs = SILE.shapers.harfbuzz {
         end
       end
     end
-    print(tostring(items))
+    --print(tostring(items))
     return items
   end
 }
@@ -57,14 +57,14 @@ SILE.outputters.Glyphs = {
   finish = function () end,
   newPage = function () lastkey = nil end,
   moveTo = function (x,y)
-    print("Moving to ",x,y)
+    --print("Moving to ",x,y)
     cursorX = x
     cursorY = SILE.outputter.height - y
   end,
   setFont = function (options)
     -- if SILE.font._key(options) == lastkey then return end
     lastkey = SILE.font._key(options)
-    print("Setting font ",tostring(options))
+    --print("Setting font ",tostring(options))
     font = SILE.font.cache(options, SILE.shaper.getFace)
     font.data = nil
     SILE.outputters.Glyphs.nsview:loadFontFromPath_withHeight_(font.filename, font.pointsize)
@@ -126,12 +126,12 @@ end
 doSILEDisplay = function(nsview)
   SILE.outputters.Glyphs.nsview = nsview
   if not stringToTypeset or not mode then return end
-  local plain = require("classes/plain")
+  local fontproof = require("classes/fontproof")
   local size = nsview.frame.size
-  plain.options.papersize(size.width.."pt x "..size.height.."pt")
+  fontproof.options.papersize(size.width.."pt x "..size.height.."pt")
   SILE.outputters.Glyphs.height = size.height
-  SILE.documentState.documentClass = plain;
-  local ff = plain:init()
+  SILE.documentState.documentClass = fontproof;
+  local ff = fontproof:init()
   SILE.typesetter:init(ff)
   SILE.call("nofolios")
   if fontsize > 0 then SILE.settings.set("font.size", fontsize) end
@@ -142,9 +142,11 @@ doSILEDisplay = function(nsview)
     SILE.shapers.Glyphs.gsfont = mode.font
     SILE.settings.set("font.filename", "")
   end
-  SILE.doTexlike(stringToTypeset)
+  print(stringToTypeset)
+  SILE.inputs.TeXlike.process("\\begin{document}"..stringToTypeset.."\\end{document}")
+  -- SILE.doTexlike(stringToTypeset)
   SILE.typesetter:chuck() -- XXX
-  plain:finish()
+  fontproof:finish()
 end
 
 -- SILE.debugFlags["fonts"] = true

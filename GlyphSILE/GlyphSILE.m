@@ -134,7 +134,7 @@ static const struct luaL_Reg printlib [] = {
         keywords[word] = Attributes;
     }
     
-    [(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
+//    [(JSTDocument *)[_incomingCode delegate] setKeywords:keywords];
     NSString *Code = [[NSUserDefaults standardUserDefaults] objectForKey:@"LuaConsoleCode"];
     if ([Code length] > 0) {
         [_incomingCode setString:Code];
