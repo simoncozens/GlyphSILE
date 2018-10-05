@@ -118,9 +118,46 @@ local fontsize
 doGlyphSILE = function(s, v, fs, m)
   stringToTypeset = s
   mode = m
-  SILE.outputters.Glyphs.nsview:setNeedsDisplay_(true)
+  if (not mode) then
+     print("DoGlyphSILE called without mode hash?")
+     return
+  end
   fontsize = fs
   SILE.fontCache = {}
+  if mode.toscreen == "NO" then
+    SILE.shaper = SILE.shapers.harfbuzz
+    SILE.outputter = SILE.outputters.libtexpdf
+    doSILEPDF()
+    SILE.shaper = SILE.shapers.Glyphs
+    SILE.outputter = SILE.outputters.Glyphs
+  else
+    SILE.shaper = SILE.shapers.Glyphs
+    SILE.outputter = SILE.outputters.Glyphs
+    SILE.outputters.Glyphs.nsview:setNeedsDisplay_(true)
+  end
+end
+
+doSILEPDF = function()
+  SILE.fontCache = {}
+  lastkey = nil
+  if not stringToTypeset or not mode then return end
+  SILE.masterFilename = mode.output
+  SILE.outputFilename = mode.output
+  local fontproof = require("classes/fontproof")
+  fontproof.options.papersize("a4")
+  print("Resetting outputter")
+  SILE.documentState.documentClass = fontproof
+  local ff = fontproof:init()
+  SILE.typesetter:init(ff)
+  if fontsize > 0 then SILE.settings.set("font.size", fontsize) end
+  if mode and mode.filename then
+    SILE.settings.set("font.filename", mode.filename)
+  else
+    print("Can't emit PDFs from masters yet!")
+    return
+  end
+  SILE.inputs.TeXlike.process("\\begin{document}"..stringToTypeset.."\\end{document}")
+  fontproof:finish()
 end
 
 doSILEDisplay = function(nsview)

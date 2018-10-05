@@ -1,4 +1,4 @@
-To build GlyphSILE and its needed shared libraries from scratch, the `build-dependencies.sh` should cover most of it. Then run `xcode-build` and the plugin should appear in GlyphSILE/build/Release/GlyphSILE.glyphsPlugin
+To build GlyphSILE and its needed shared libraries from scratch, the `build-dependencies.sh` should cover most of it. Then run `xcode-build` and the plugin should appear in your Glyphs plugins directory.
 
 If you need to do it manually:
 

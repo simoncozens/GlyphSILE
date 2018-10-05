@@ -17,5 +17,6 @@
 @property (weak) IBOutlet SILEPreviewView *SILEOutput;
 @property (weak) IBOutlet NSComboBoxCell *fontSizeSelection;
 @property (weak) IBOutlet NSPopUpButton *SILEMode;
+@property (weak) IBOutlet NSButton *PDFButton;
 
 @end

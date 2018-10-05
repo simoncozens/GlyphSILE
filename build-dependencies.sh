@@ -32,6 +32,15 @@ sh ../relocate-a-thing.sh libfreetype.6.dylib
 sh ../relocate-self.sh libfreetype.dylib
 sh ../relocate-a-thing.sh libfreetype.dylib
 
+echo "Copying ICU (a horrible hack)"
+echo "============================="
+cp /usr/local/opt/icu4c/lib/*dylib frameworks
+chmod +w frameworks/*
+for i in libicu* ; do
+sh ../relocate-self.sh $i
+sh ../relocate-a-thing.sh $i
+ ; done
+
 echo "============="
 echo "Building SILE"
 echo "============="
@@ -44,6 +53,5 @@ cd frameworks
 sh ../relocate-self.sh libtexpdf.0.dylib
 sh ../relocate-a-thing.sh libtexpdf.0.dylib
 cd ..
-rm sile/core/justenoughicu.so
 sh relocate-sile-shared-objects.sh
-cp sile/core/*icu shared-libraries
+cp sile/core/* shared-libraries

@@ -111,16 +111,20 @@
 	return [Exporter finalFontFile];
 }
 
-- (IBAction)drawSILEPreview:(id)sender {
+- (void) callSILE:(bool)toScreen {
 	NSString *code = [_SILEInput string];
 	SILEPreviewView *view = _SILEOutput;
 	NSMenuItem* mode =  [_SILEMode selectedItem];
 	if (!mode) return;
 	
+    NSString *fileName = [NSString stringWithFormat:@"%@_%@", [[NSProcessInfo processInfo] globallyUniqueString], @"sile.pdf"];
+    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:fileName];
+    
 	NSMutableDictionary* d = [mode representedObject];
 	NSError *Error = nil;
 	GSFont *f = [d objectForKey:@"font"];
 	UKLog(@"f: %@", f);
+    if (!f) return;
 	if ([d objectForKey:@"instance"]) {
 		GSInstance *i = [d objectForKey:@"instance"];
 		
@@ -136,6 +140,12 @@
 		NSString *family = [NSString stringWithFormat: @"Glyphs:Master:%@", [[d objectForKey:@"master"] valueForKey:@"id"]];
 		[d setValue:family forKey:@"family"];
 	}
+    if (toScreen) {
+        d[@"toscreen"] = @"YES";
+    } else {
+        d[@"toscreen"] = @"NO";
+        d[@"output"] = filePath;
+    }
 	lua_State *L = [[NSLua sharedLua] getLuaState];
 	lua_getglobal(L, "doGlyphSILE");
 	lua_pushstring(L, [code UTF8String]);
@@ -145,6 +155,26 @@
 	to_lua(L, d, true);
 	if (lua_pcall(L, 4, 1, 0) != 0)
 		NSLog(@"GlyphsSILE error running function `f': %s", lua_tostring(L, -1));
+    if (!toScreen && [[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NSWorkspace sharedWorkspace] openFile:filePath];
+    }
 }
 
+- (IBAction)drawSILEPreview:(id)sender {
+    [self callSILE:true];
+}
+- (IBAction)createPDF:(id)sender {
+    [self callSILE:false];
+}
+
+- (IBAction)onSILEModeSelect:(id)sender {
+    NSMenuItem* mode =  [_SILEMode selectedItem];
+    if (!mode) return;
+    NSMutableDictionary* d = [mode representedObject];
+    if ([d objectForKey:@"instance"]) {
+        [_PDFButton setEnabled:true];
+    } else if ([d objectForKey:@"master"]) {
+        [_PDFButton setEnabled:false];
+    }
+}
 @end

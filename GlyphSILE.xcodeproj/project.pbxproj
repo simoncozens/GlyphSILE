@@ -77,6 +77,8 @@
 		F47CE59A1BC158A7009C76C1 /* LuaBridge.lua in Resources */ = {isa = PBXBuildFile; fileRef = F47CE5911BC158A7009C76C1 /* LuaBridge.lua */; };
 		F47CE59B1BC158A7009C76C1 /* LuaBridgedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5931BC158A7009C76C1 /* LuaBridgedFunctions.m */; };
 		F47CE59C1BC158A7009C76C1 /* NSLua.m in Sources */ = {isa = PBXBuildFile; fileRef = F47CE5951BC158A7009C76C1 /* NSLua.m */; };
+		F4A1AF302167596000D1E6FE /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A1AF2E2167596000D1E6FE /* libpng16.16.dylib */; };
+		F4A1AF31216759B200D1E6FE /* libpng16.16.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4A1AF2E2167596000D1E6FE /* libpng16.16.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F4B1FCD721661E23006F5733 /* libicui18n.61.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCC421661E20006F5733 /* libicui18n.61.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F4B1FCD821661E23006F5733 /* libicudata.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCC621661E20006F5733 /* libicudata.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F4B1FCD921661E23006F5733 /* libicutest.61.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4B1FCC721661E20006F5733 /* libicutest.61.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -136,6 +138,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F4A1AF31216759B200D1E6FE /* libpng16.16.dylib in CopyFiles */,
 				F4B1FCD721661E23006F5733 /* libicui18n.61.1.dylib in CopyFiles */,
 				F4B1FCD821661E23006F5733 /* libicudata.dylib in CopyFiles */,
 				F4B1FCD921661E23006F5733 /* libicutest.61.1.dylib in CopyFiles */,
@@ -273,6 +276,7 @@
 		F47CE5941BC158A7009C76C1 /* NSLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLua.h; sourceTree = "<group>"; };
 		F47CE5951BC158A7009C76C1 /* NSLua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLua.m; sourceTree = "<group>"; };
 		F47CE5961BC158A7009C76C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F4A1AF2E2167596000D1E6FE /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = frameworks/libpng16.16.dylib; sourceTree = "<group>"; };
 		F4B1FCC421661E20006F5733 /* libicui18n.61.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicui18n.61.1.dylib; path = frameworks/libicui18n.61.1.dylib; sourceTree = "<group>"; };
 		F4B1FCC621661E20006F5733 /* libicudata.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicudata.dylib; path = frameworks/libicudata.dylib; sourceTree = "<group>"; };
 		F4B1FCC721661E20006F5733 /* libicutest.61.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicutest.61.1.dylib; path = frameworks/libicutest.61.1.dylib; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A1AF302167596000D1E6FE /* libpng16.16.dylib in Frameworks */,
 				F4E89FBE1BE0CDF000E9D5CA /* CoreFoundation.framework in Frameworks */,
 				F4B853BF1BDBC6A4000B26CF /* libfreetype.6.dylib in Frameworks */,
 				F429009D1BB513B70047C6CF /* GlyphsCore.framework in Frameworks */,
@@ -378,6 +383,7 @@
 		F42900901BB513B70047C6CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4A1AF2E2167596000D1E6FE /* libpng16.16.dylib */,
 				F4E89FBD1BE0CDF000E9D5CA /* CoreFoundation.framework */,
 				F42900911BB513B70047C6CF /* Cocoa.framework */,
 			);

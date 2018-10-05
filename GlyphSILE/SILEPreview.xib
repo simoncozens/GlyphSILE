@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GlyphSILEWindow">
             <connections>
+                <outlet property="PDFButton" destination="nFW-V8-80O" id="bN3-3g-Ctz"/>
                 <outlet property="SILEInput" destination="b40-Ay-Oxq" id="CKC-yO-E9P"/>
                 <outlet property="SILEMode" destination="5lA-ym-BbD" id="ReE-3X-gpI"/>
                 <outlet property="SILEOutput" destination="eoY-hM-guE" id="8bb-2w-trL"/>
@@ -17,7 +18,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="SILE Preview" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Jt6-M0-0LC">
+        <window title="SILE Preview" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="Jt6-M0-0LC">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="543" height="359"/>
@@ -37,14 +38,15 @@
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="dbr-qc-7Qu">
                                 <rect key="frame" x="0.0" y="213" width="543" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <clipView key="contentView" id="Sr2-sF-VbZ">
+                                <clipView key="contentView" drawsBackground="NO" id="Sr2-sF-VbZ">
                                     <rect key="frame" x="0.0" y="0.0" width="543" height="113"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" id="b40-Ay-Oxq">
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" id="b40-Ay-Oxq">
                                             <rect key="frame" x="0.0" y="0.0" width="543" height="113"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="543" height="113"/>
                                             <size key="maxSize" width="724" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -57,16 +59,15 @@
                                             </connections>
                                         </textView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="x5v-IP-M8Y"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Zuu-CG-gSx">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Zuu-CG-gSx">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="o5R-7A-Wrb">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="o5R-7A-Wrb">
                                     <rect key="frame" x="526" y="1" width="16" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -92,7 +93,7 @@ DQ
                         </connections>
                     </button>
                     <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FXH-4R-r6x">
-                        <rect key="frame" x="182" y="3" width="66" height="26"/>
+                        <rect key="frame" x="183" y="3" width="66" height="26"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="63" id="MNn-6y-dsL"/>
                         </constraints>
@@ -120,7 +121,7 @@ DQ
                         </comboBoxCell>
                     </comboBox>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QhL-GO-GhR">
-                        <rect key="frame" x="117" y="8" width="59" height="17"/>
+                        <rect key="frame" x="118" y="8" width="59" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Font size" id="OKL-2H-CQe">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -128,7 +129,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5lA-ym-BbD">
-                        <rect key="frame" x="18" y="3" width="96" height="26"/>
+                        <rect key="frame" x="18" y="3" width="97" height="25"/>
                         <popUpButtonCell key="cell" type="push" title="Instances" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="NTd-jZ-PLB" id="wRv-wB-7JT">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -139,6 +140,9 @@ DQ
                                     <menuItem title="Masters" tag="1" enabled="NO" id="TNG-Jb-chB"/>
                                 </items>
                             </menu>
+                            <connections>
+                                <action selector="onSILEModeSelect:" target="-2" id="3hL-ci-BVJ"/>
+                            </connections>
                         </popUpButtonCell>
                     </popUpButton>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nFW-V8-80O">
@@ -146,6 +150,9 @@ DQ
                         <buttonCell key="cell" type="push" title="PDF" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4qT-jS-8DT">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="createPDF:" target="-2" id="Wmh-o2-YCi"/>
+                            </connections>
                         </buttonCell>
                     </button>
                 </subviews>
